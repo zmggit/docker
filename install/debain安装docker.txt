@@ -1,0 +1,76 @@
+# 添加sbin命令
+export PATH=$PATH:/usr/sbin
+# 写出时间同步配置文件
+echo [Time]>/etc/systemd/timesyncd.conf
+echo NTP=ntp1.aliyun.com ntp2.aliyun.com time1.cloud.tencent.com time2.cloud.tencent.com>>/etc/systemd/timesyncd.conf
+# 重启时间同步服务
+systemctl restart systemd-timesyncd
+# 查看时间同步状态
+timedatectl timesync-status
+# 备份apt源配置
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+# 删除apt源配置
+rm -rf /etc/apt/sources.list
+# 写出阿里apt源配置
+tee /etc/apt/sources.list <<-'EOF'
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+deb http://mirrors.aliyun.com/debian-security/ buster/updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian-security/ buster/updates main non-free contrib
+EOF
+# 清理apt缓存
+apt-get clean
+# 更新apt缓存
+apt-get update
+# 创建docker目录
+mkdir -p /etc/docker /opt/docker
+# 创建docker配置文件
+tee /etc/docker/daemon.json <<-'EOF'
+{
+    "data-root": "/opt/docker",
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "800m",
+        "max-file": "50"
+    },
+    "registry-mirrors": [
+        "https://mirror.ccs.tencentyun.com"
+    ]
+}
+EOF
+
+
+
+安装docker
+
+# 安装工具依赖
+apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
+# 安装GPG证书
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/debian/gpg | apt-key add -
+# 添加软件源
+add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian $(lsb_release -cs) stable"
+# 更新缓存
+apt-get update
+# 安装docker
+apt-get install -y docker-ce docker-ce-cli containerd.io
+# 下载docker-compose
+curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# 给予docker-compose执行权
+chmod +x /usr/local/bin/docker-compose
+# 重载systemctl配置文件
+systemctl daemon-reload
+# 重启docker
+systemctl restart docker
+# docker开机自动启动
+systemctl enable docker.service
+# containerd容器开机自动启动
+systemctl enable containerd.service
+# 查看docker版本信息
+docker info
+# 查看docker-compose版本信息
+docker-compose --version
+

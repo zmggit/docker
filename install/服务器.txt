@@ -1,0 +1,23 @@
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C
+
+
+echo -e "USER tel\nPASS Apom@321\n" | telnet 172.16.150.24 23
+
+USER tel PASS Apom@321 telnet 
+
+# vim /etc/xinetd.d/telnet    (新建的，我电脑开始是没有的)
+service telnet
+
+{
+        disable = no
+        flags = REUSE
+        socket_type = stream
+        wait = no
+        user = root
+        server = /usr/sbin/telnetd
+        server_args = -h
+        log_on_failure += USERID
+}
+
+
+docker run -d -it -p 1521:1521 --name oracle11g --restart=always registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
