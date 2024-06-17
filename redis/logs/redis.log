@@ -434,3 +434,123 @@
 1:M 17 May 2024 15:39:05.561 * DB saved on disk
 1:M 17 May 2024 15:39:05.561 * Removing the pid file.
 1:M 17 May 2024 15:39:05.561 # Redis is now ready to exit, bye bye...
+1:C 21 May 2024 15:41:01.776 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 21 May 2024 15:41:01.776 # Redis version=7.0.12, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 21 May 2024 15:41:01.777 # Configuration loaded
+1:M 21 May 2024 15:41:01.777 * monotonic clock: POSIX clock_gettime
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 7.0.12 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                  
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 1
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           https://redis.io       
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+1:M 21 May 2024 15:41:01.781 # Server initialized
+1:M 21 May 2024 15:41:01.784 * Reading RDB base file on AOF loading...
+1:M 21 May 2024 15:41:01.785 * Loading RDB produced by version 7.0.12
+1:M 21 May 2024 15:41:01.785 * RDB age 365816 seconds
+1:M 21 May 2024 15:41:01.786 * RDB memory usage when created 0.85 Mb
+1:M 21 May 2024 15:41:01.786 * RDB is base AOF
+1:M 21 May 2024 15:41:01.786 * Done loading RDB, keys loaded: 0, keys expired: 0.
+1:M 21 May 2024 15:41:01.787 * DB loaded from base file appendonly.aof.1.base.rdb: 0.003 seconds
+1:M 21 May 2024 15:41:01.787 * DB loaded from append only file: 0.004 seconds
+1:M 21 May 2024 15:41:01.790 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+1:M 21 May 2024 15:41:01.790 * Ready to accept connections
+1:signal-handler (1716281535) Received SIGTERM scheduling shutdown...
+1:M 21 May 2024 16:52:15.478 # User requested shutdown...
+1:M 21 May 2024 16:52:15.479 * Calling fsync() on the AOF file.
+1:M 21 May 2024 16:52:15.483 * Saving the final RDB snapshot before exiting.
+1:M 21 May 2024 16:52:15.485 * DB saved on disk
+1:M 21 May 2024 16:52:15.485 * Removing the pid file.
+1:M 21 May 2024 16:52:15.486 # Redis is now ready to exit, bye bye...
+1:C 24 May 2024 15:10:50.086 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 24 May 2024 15:10:50.087 # Redis version=7.0.12, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 24 May 2024 15:10:50.088 # Configuration loaded
+1:M 24 May 2024 15:10:50.089 * monotonic clock: POSIX clock_gettime
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 7.0.12 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                  
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 1
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           https://redis.io       
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+1:M 24 May 2024 15:10:50.092 # Server initialized
+1:M 24 May 2024 15:10:50.105 * Reading RDB base file on AOF loading...
+1:M 24 May 2024 15:10:50.106 * Loading RDB produced by version 7.0.12
+1:M 24 May 2024 15:10:50.107 * RDB age 623205 seconds
+1:M 24 May 2024 15:10:50.109 * RDB memory usage when created 0.85 Mb
+1:M 24 May 2024 15:10:50.111 * RDB is base AOF
+1:M 24 May 2024 15:10:50.112 * Done loading RDB, keys loaded: 0, keys expired: 0.
+1:M 24 May 2024 15:10:50.114 * DB loaded from base file appendonly.aof.1.base.rdb: 0.009 seconds
+1:M 24 May 2024 15:10:50.115 * DB loaded from append only file: 0.011 seconds
+1:M 24 May 2024 15:10:50.116 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+1:M 24 May 2024 15:10:50.117 * Ready to accept connections
+1:signal-handler (1716534779) Received SIGTERM scheduling shutdown...
+1:M 24 May 2024 15:12:59.760 # User requested shutdown...
+1:M 24 May 2024 15:12:59.761 * Calling fsync() on the AOF file.
+1:M 24 May 2024 15:12:59.761 * Saving the final RDB snapshot before exiting.
+1:M 24 May 2024 15:12:59.762 * DB saved on disk
+1:M 24 May 2024 15:12:59.762 * Removing the pid file.
+1:M 24 May 2024 15:12:59.763 # Redis is now ready to exit, bye bye...
+1:C 30 May 2024 09:33:16.892 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 30 May 2024 09:33:16.892 # Redis version=7.0.12, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 30 May 2024 09:33:16.894 # Configuration loaded
+1:M 30 May 2024 09:33:16.895 * monotonic clock: POSIX clock_gettime
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 7.0.12 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                  
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 1
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           https://redis.io       
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+1:M 30 May 2024 09:33:16.897 # Server initialized
+1:M 30 May 2024 09:33:16.901 * Reading RDB base file on AOF loading...
+1:M 30 May 2024 09:33:16.901 * Loading RDB produced by version 7.0.12
+1:M 30 May 2024 09:33:16.902 * RDB age 1121351 seconds
+1:M 30 May 2024 09:33:16.902 * RDB memory usage when created 0.85 Mb
+1:M 30 May 2024 09:33:16.902 * RDB is base AOF
+1:M 30 May 2024 09:33:16.903 * Done loading RDB, keys loaded: 0, keys expired: 0.
+1:M 30 May 2024 09:33:16.903 * DB loaded from base file appendonly.aof.1.base.rdb: 0.003 seconds
+1:M 30 May 2024 09:33:16.903 * DB loaded from append only file: 0.004 seconds
+1:M 30 May 2024 09:33:16.904 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+1:M 30 May 2024 09:33:16.904 * Ready to accept connections
+1:signal-handler (1717032984) Received SIGTERM scheduling shutdown...
+1:M 30 May 2024 09:36:24.309 # User requested shutdown...
+1:M 30 May 2024 09:36:24.309 * Calling fsync() on the AOF file.
+1:M 30 May 2024 09:36:24.309 * Saving the final RDB snapshot before exiting.
+1:M 30 May 2024 09:36:24.310 * DB saved on disk
+1:M 30 May 2024 09:36:24.311 * Removing the pid file.
+1:M 30 May 2024 09:36:24.311 # Redis is now ready to exit, bye bye...

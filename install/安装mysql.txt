@@ -56,7 +56,7 @@ docker run --network host --name mysql8  -it -p 3308:3308 -v /opt/datas/docker/m
 
 
 ##先随便创建一个复制对应的文件到是宿主机
-docker run --restart=always --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 77f16659c129
+docker run --restart=alwa0ys --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 77f16659c129
 docker exec -it mysql8-copy bin/bash
 
 ##复制所有文件到宿主机
