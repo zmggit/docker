@@ -47,58 +47,33 @@ EOF
 
 curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-
-docker run --network host --name mysql8  -it -p 3308:3308 -v /opt/datas/docker/mysql/conf/my.cnf:/etc/mysql/my.cnf -v /opt/datas/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Apom@321 -d mysql
-docker run --network host --name mysql8  -it -p 3308:3308 -v /opt/datas/docker/mysql/conf/my.cnf:/etc/mysql/my.cnf -v /opt/datas/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Apom@321 -d mysql
-
 /Users/zhumenggang/zhu_work/docker/mysql
 
 
 
 ##先随便创建一个复制对应的文件到是宿主机
-docker run --restart=alwa0ys --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 77f16659c129
+docker run --restart=always --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 e9277becade9
 docker exec -it mysql8-copy bin/bash
 
 ##复制所有文件到宿主机
  docker cp 5b3c7edb3744:/var/lib/mysql/. /opt/datas/docker/mysql/data/
-
-
-
- docker run --restart=always --name mysql8ssl --privileged=true -d -p 3232:3306 -v /Users/zhumenggang/zhu_work/docker/mysql/conf/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/docker/mysql/log:/var/log/ -v /Users/zhumenggang/zhu_work/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 02662e079c08
+ docker cp df35b56c6707:/var/lib/mysql/. /Users/zhumenggang/zhu_work/go/src/docker/mysql8/data
 
 安装mysql8
-docker run --restart=always --name mysql8 --privileged=true -d -p 3333:3306 -v /opt/datas/docker/mysql/conf/my.cnf:/etc/mysql/my.cnf -v /opt/datas/docker/mysql/logs:/var/log/ -v /opt/datas/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 77f16659c129
-
+docker run --restart=always --name mysql8 --privileged=true -d -p 3232:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/conf/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/log:/var/log/ -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 6c4781d18d56
+//进去容器
 docker exec -it mysql8 bin/bash
 
-
-mysql -u root -p123456
-
-
-create user 'admin'@'%' identified by '123456';
-
-
  use mysql;
- 
  select host,user,plugin from user;
- 
  update user set host='%' where user='root';
-
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'Apom@321';
-flush privileges;
-
-alter user 'root'@'%' identified with mysql_native_password by 'Apom@321';
-
-
 复制容器内外文件
  docker cp 5e019ec16480:/etc/apt/sources.list /opt/datas/docker/mysql/ 容器到宿主机
  docker cp /opt/datas/docker/mysql/sources.list 5e019ec16480:/etc/apt/
 
 
 创建必须使用ssl登录的账号
-
 show variables like '%ssl%';
-
 CREATE USER 'zmg'@'%' IDENTIFIED WITH mysql_native_password BY 'Apom@321' require ssl PASSWORD EXPIRE NEVER;
 
 CREATE USER 'zmg'@'%' IDENTIFIED BY 'Apom@321';
@@ -123,7 +98,9 @@ mysql --ssl-ca=/var/lib/mysql/server-cert.pem --ssl-cert=/var/lib/mysql/server-c
 mysql --ssl-ca=/var/lib/mysql/ca.pem --ssl-cert=/var/lib/mysql/client-cert.pem --ssl-key=/var/lib/mysql/client-key.pem --ssl-cipher=AES128-SHA -u zmg -pApom@321
 
 #自定义手动
-mysql --ssl-ca=/Users/zhumenggang/zhu_work/docker/mysql/data/ca.pem --ssl-cert=/Users/zhumenggang/zhu_work/docker/mysql/data/client-cert.pem --ssl-key=/Users/zhumenggang/zhu_work/docker/mysql/data/client-key.pem  -u zmg -pApom@321 -h172.16.2.126 -P3232
+mysql --ssl-ca=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/ca.pem --ssl-cert=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/client-cert.pem --ssl-key=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/client-key.pem  -u zmg -pApom@321 -h172.16.2.126 -P3232
+
+mysql --ssl-ca=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/ca.pem --ssl-cert=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/client-cert.pem --ssl-key=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/client-key.pem  -u zmg  -h172.16.2.126 -P3232
 
 
 
@@ -147,6 +124,8 @@ ssl-key=/path/to/server_key.pem
 
 
 mysql -u root -p123456 -h172.16.2.126 -P3232
+mysql -u zmg -pApom@321 -h172.16.2.126 -P3232
+mysql -u zmg  -h172.16.2.126 -P3232
 
 
 

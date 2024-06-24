@@ -1,19 +1,19 @@
 version: "3.9"
 services:
-#  postgres:
-#    container_name: postgres
-#    image: postgres:11.15
-#    privileged: true
-#    ports:
-#      - 5432:5432
-#    environment:
-#      - POSTGRES_PASSWORD=123456
-#      - TZ=Asia/Shanghai
-#    volumes:
-#      - /Users/zhumenggang/zhu_work/go/src/docker/postsql/data:/var/lib/postgresql/data
-#    networks:
-#      - app-tier
-#    restart: always
+  postgres:
+    container_name: postgres
+    image: postgres:11.15
+    privileged: true
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=123456
+      - TZ=Asia/Shanghai
+    volumes:
+      - /Users/zhumenggang/zhu_work/go/src/docker/postsql/data:/var/lib/postgresql/data
+    networks:
+      - app-tier
+    restart: always
 #  mongo:
 #    container_name: mongo
 #    image: mongo:4.4
@@ -83,17 +83,27 @@ services:
 #      - app-tier
 #    command: ["redis-server","/etc/redis/redis.conf"]
 #    restart: always
-  oracle11g:
-    container_name: oracle11g
-    image: deepdiver/docker-oracle-xe-11g
-    privileged: true
-    ports:
-      - "1521:1521"
-      - "5500:5500"
-    networks:
-      - app-tier
-    restart: always
-
+#  oracle11g:
+#    container_name: oracle11g
+#    image: deepdiver/docker-oracle-xe-11g
+#    privileged: true
+#    ports:
+#      - "1521:1521"
+#      - "5500:5500"
+#    networks:
+#      - app-tier
+#    restart: always
+#  sybase:
+#    container_name: sybase157
+#    image: ifnazar/sybase_15_7
+#    privileged: true
+#    ports:
+#      - 5000:5000
+#    environment:
+#      - SYBASE_SA_PASSWORD=123456
+#    networks:
+#      - app-tier
+#    restart: always
 networks:
   app-tier:
     name: app-tier

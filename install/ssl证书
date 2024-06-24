@@ -1,0 +1,32 @@
+mysql 自带
+
+mysql_ssl_rsa_setup --datadir=/var/lib/mysql --user=mysql --uid=mysql
+
+生成私钥
+openssl genrsa 2048 > ca-key.pem
+
+成证书签名请求（CSR）
+openssl req -new -x509 -nodes -days 3600 -key ca-key.pem -out ca.pem
+
+生成自签名证书
+openssl req -newkey rsa:2048 -days 3600 -nodes -keyout server-key.pem -out server-req.pem
+
+openssl rsa -in server-key.pem -out server-key.pem
+
+openssl x509 -req -in server-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem -set_serial 01 -out server-cert.pem
+
+openssl req -newkey rsa:2048 -days 3600 -nodes -keyout client-key.pem -out client-req.pem
+
+openssl rsa -in client-key.pem -out client-key.pem
+
+openssl x509 -req -in client-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem -set_serial 01 -out client-cert.pem
+
+验证证书是否正确
+openssl verify -CAfile ca.pem server-cert.pem client-cert.pem
+server-cert.pem: OK
+client-cert.pem: OK
+查看证书的内容（例如，检查证书有效的日期范围）
+openssl x509 -text -in ca.pem
+openssl x509 -text -in server-cert.pem
+openssl x509 -text -in client-cert.pem
+ No newline at end of file
