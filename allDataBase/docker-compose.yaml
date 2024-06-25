@@ -1,19 +1,19 @@
 version: "3.9"
 services:
-  postgres:
-    container_name: postgres
-    image: postgres:11.15
-    privileged: true
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_PASSWORD=123456
-      - TZ=Asia/Shanghai
-    volumes:
-      - /Users/zhumenggang/zhu_work/go/src/docker/postsql/data:/var/lib/postgresql/data
-    networks:
-      - app-tier
-    restart: always
+#  postgres:
+#    container_name: postgres
+#    image: postgres:11.15
+#    privileged: true
+#    ports:
+#      - 5432:5432
+#    environment:
+#      - POSTGRES_PASSWORD=123456
+#      - TZ=Asia/Shanghai
+#    volumes:
+#      - /Users/zhumenggang/zhu_work/go/src/docker/postsql/data:/var/lib/postgresql/data
+#    networks:
+#      - app-tier
+#    restart: always
 #  mongo:
 #    container_name: mongo
 #    image: mongo:4.4
@@ -52,21 +52,21 @@ services:
 #      networks:
 #          - app-tier
 #      restart: always
-#  informix:
-#      container_name: informix
-#      image: ibmcom/informix-developer-database
-#      privileged: true
-#      ports:
-#        - 9088:9088
-#        - 9089:9089
-#        - 27017:27017
-#        - 27018:27018
-#        - 27883:27883
-#      environment:
-#          LICENSE: accept
-#      networks:
-#          - app-tier
-#      restart: always
+  informix:
+      container_name: informix
+      image: ibmcom/informix-developer-database
+      privileged: true
+      ports:
+        - 9088:9088
+        - 9089:9089
+        - 27017:27017
+        - 27018:27018
+        - 27883:27883
+      environment:
+          LICENSE: accept
+      networks:
+          - app-tier
+      restart: always
 #  redis:
 #    container_name: redis
 #    image: redis

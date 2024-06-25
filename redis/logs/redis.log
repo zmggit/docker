@@ -1354,3 +1354,56 @@
 1:M 21 Jun 2024 10:27:01.172 * DB saved on disk
 1:M 21 Jun 2024 10:27:01.172 * Removing the pid file.
 1:M 21 Jun 2024 10:27:01.172 # Redis is now ready to exit, bye bye...
+1:C 24 Jun 2024 17:06:25.568 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 24 Jun 2024 17:06:25.573 * Redis version=7.2.5, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 24 Jun 2024 17:06:25.577 * Configuration loaded
+1:M 24 Jun 2024 17:06:25.578 * monotonic clock: POSIX clock_gettime
+1:M 24 Jun 2024 17:06:25.580 # Failed to write PID file: Permission denied
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 7.2.5 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                  
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 1
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           https://redis.io       
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+1:M 24 Jun 2024 17:06:25.584 * Server initialized
+1:M 24 Jun 2024 17:06:25.590 * Reading RDB base file on AOF loading...
+1:M 24 Jun 2024 17:06:25.592 * Loading RDB produced by version 7.0.12
+1:M 24 Jun 2024 17:06:25.593 * RDB age 3308540 seconds
+1:M 24 Jun 2024 17:06:25.593 * RDB memory usage when created 0.85 Mb
+1:M 24 Jun 2024 17:06:25.595 * RDB is base AOF
+1:M 24 Jun 2024 17:06:25.595 * Done loading RDB, keys loaded: 0, keys expired: 0.
+1:M 24 Jun 2024 17:06:25.596 * DB loaded from base file appendonly.aof.1.base.rdb: 0.008 seconds
+1:M 24 Jun 2024 17:06:25.610 * DB loaded from append only file: 0.022 seconds
+1:M 24 Jun 2024 17:06:25.613 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+1:M 24 Jun 2024 17:06:25.616 * Ready to accept connections tcp
+1:M 24 Jun 2024 17:07:07.842 - Accepted 192.168.65.1:24824
+1:M 24 Jun 2024 17:07:08.939 - Client closed connection id=4 addr=192.168.65.1:24824 laddr=172.19.0.6:6379 fd=9 name= age=1 idle=1 flags=N db=15 sub=0 psub=0 ssub=0 multi=-1 qbuf=0 qbuf-free=20474 argv-mem=0 multi-mem=0 rbs=1024 rbp=0 obl=0 oll=0 omem=0 tot-mem=22400 events=r cmd=select user=default redir=-1 resp=2 lib-name= lib-ver=
+1:M 24 Jun 2024 17:07:08.941 - Accepted 192.168.65.1:58868
+1:M 24 Jun 2024 17:07:08.942 - Accepted 192.168.65.1:49710
+1:M 24 Jun 2024 17:07:09.890 - Client closed connection id=5 addr=192.168.65.1:58868 laddr=172.19.0.6:6379 fd=9 name= age=1 idle=1 flags=N db=0 sub=0 psub=0 ssub=0 multi=-1 qbuf=0 qbuf-free=20474 argv-mem=0 multi-mem=0 rbs=1024 rbp=0 obl=0 oll=0 omem=0 tot-mem=22400 events=r cmd=info user=default redir=-1 resp=2 lib-name= lib-ver=
+1:M 24 Jun 2024 17:07:09.892 - Accepted 192.168.65.1:27232
+1:M 24 Jun 2024 17:07:11.935 - Client closed connection id=6 addr=192.168.65.1:49710 laddr=172.19.0.6:6379 fd=10 name= age=3 idle=2 flags=N db=0 sub=0 psub=0 ssub=0 multi=-1 qbuf=0 qbuf-free=20474 argv-mem=0 multi-mem=0 rbs=1024 rbp=15 obl=0 oll=0 omem=0 tot-mem=22400 events=r cmd=scan user=default redir=-1 resp=2 lib-name= lib-ver=
+1:M 24 Jun 2024 17:07:11.939 - Client closed connection id=7 addr=192.168.65.1:27232 laddr=172.19.0.6:6379 fd=9 name= age=2 idle=2 flags=N db=0 sub=0 psub=0 ssub=0 multi=-1 qbuf=0 qbuf-free=20474 argv-mem=0 multi-mem=0 rbs=1024 rbp=0 obl=0 oll=0 omem=0 tot-mem=22400 events=r cmd=info user=default redir=-1 resp=2 lib-name= lib-ver=
+1:M 24 Jun 2024 17:07:11.940 - Accepted 192.168.65.1:48917
+1:M 24 Jun 2024 17:07:17.431 - Accepted 192.168.65.1:64895
+1:M 24 Jun 2024 17:07:17.442 - Client closed connection id=9 addr=192.168.65.1:64895 laddr=172.19.0.6:6379 fd=10 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 ssub=0 multi=-1 qbuf=0 qbuf-free=20474 argv-mem=0 multi-mem=0 rbs=16384 rbp=16384 obl=0 oll=0 omem=0 tot-mem=37760 events=r cmd=info user=default redir=-1 resp=2 lib-name= lib-ver=
+1:M 24 Jun 2024 17:07:27.946 - Client closed connection id=8 addr=192.168.65.1:48917 laddr=172.19.0.6:6379 fd=9 name= age=16 idle=16 flags=N db=0 sub=0 psub=0 ssub=0 multi=-1 qbuf=0 qbuf-free=20474 argv-mem=0 multi-mem=0 rbs=1024 rbp=0 obl=0 oll=0 omem=0 tot-mem=22400 events=r cmd=info user=default redir=-1 resp=2 lib-name= lib-ver=
+1:signal-handler (1719220053) Received SIGTERM scheduling shutdown...
+1:M 24 Jun 2024 17:07:33.429 * User requested shutdown...
+1:M 24 Jun 2024 17:07:33.429 * Calling fsync() on the AOF file.
+1:M 24 Jun 2024 17:07:33.430 * Saving the final RDB snapshot before exiting.
+1:M 24 Jun 2024 17:07:33.431 * DB saved on disk
+1:M 24 Jun 2024 17:07:33.432 * Removing the pid file.
+1:M 24 Jun 2024 17:07:33.432 # Redis is now ready to exit, bye bye...

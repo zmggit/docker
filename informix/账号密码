@@ -1,3 +1,8 @@
+
+docker run -it --name informix --privileged -p 9088:9088 -p 9089:9089 -p 27017:27017 -p 27018:27018 -p 27883:27883 -e LICENSE=accept  c65a87ae9232
+
+对应的jdbc 驱动版本 ver.4.10
+端口9088
 数据库database可选：sysadmin
 默认用户名：informix
 默认密码：in4mix
