@@ -8,6 +8,7 @@ openssl genrsa 2048 > ca-key.pem
 成证书签名请求（CSR）
 openssl req -new -x509 -nodes -days 3600 -key ca-key.pem -out ca.pem
 
+www.dbcon.com
 生成自签名证书
 openssl req -newkey rsa:2048 -days 3600 -nodes -keyout server-key.pem -out server-req.pem
 
