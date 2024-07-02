@@ -52,21 +52,21 @@ services:
 #      networks:
 #          - app-tier
 #      restart: always
-  informix:
-      container_name: informix
-      image: ibmcom/informix-developer-database
-      privileged: true
-      ports:
-        - 9088:9088
-        - 9089:9089
-        - 27017:27017
-        - 27018:27018
-        - 27883:27883
-      environment:
-          LICENSE: accept
-      networks:
-          - app-tier
-      restart: always
+#  informix:
+#      container_name: informix
+#      image: ibmcom/informix-developer-database
+#      privileged: true
+#      ports:
+#        - 9088:9088
+#        - 9089:9089
+#        - 27017:27017
+#        - 27018:27018
+#        - 27883:27883
+#      environment:
+#          LICENSE: accept
+#      networks:
+#          - app-tier
+#      restart: always
 #  redis:
 #    container_name: redis
 #    image: redis
@@ -104,6 +104,59 @@ services:
 #    networks:
 #      - app-tier
 #    restart: always
+
+#  oracle11g:
+#    container_name: oracle11g
+#    image: deepdiver/docker-oracle-xe-11g
+#    privileged: true
+#    ports:
+#      - "1521:1521"
+#      - "5500:5500"
+#    networks:
+#      - app-tier
+#    restart: always
+#  sybase:
+#    container_name: sybase157
+#    image: ifnazar/sybase_15_7
+#    privileged: true
+#    ports:
+#      - 5000:5000
+#    environment:
+#      - SYBASE_SA_PASSWORD=123456
+#    networks:
+#      - app-tier
+#    restart: always
+
+#  meilisearch:
+#    container_name: meilisearch
+#    image: getmeili/meilisearch:v1.8
+#    privileged: true
+#    ports:
+#      - 7700:7700
+#    environment:
+#      MEILI_ENV: development
+#    volumes:
+#      - /Users/zhumenggang/zhu_work/go/src/docker/meilisearch/data:/data
+#    networks:
+#      - app-tier7
+#    restart: always
+
+  mssql:
+      container_name: mssql
+      image: mcr.microsoft.com/mssql/server
+      privileged: true
+      ports:
+        - 1433:1433
+      volumes:
+        - /Users/zhumenggang/zhu_work/go/src/docker/mssql/data:/var/opt/mssql
+      environment:
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=Apom@321.321
+        - ROOT_PASSWORD=Apom@321.321
+      networks:
+          - app-tier
+      restart: always
+
 networks:
   app-tier:
     name: app-tier
