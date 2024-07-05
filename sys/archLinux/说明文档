@@ -1,0 +1,5 @@
+更新
+pacman -Syu
+添加
+pacman -S openssh
+

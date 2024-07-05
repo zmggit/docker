@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+	
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://g.alicdn.com/dingding/dingtalk-jsapi/2.10.3/dingtalk.open.js"></script>
+<body>
+
+      <div id="clock" class="time" ></div>
+    
+<!-- <h1 style="color: chartreuse">穿透t111est</h1>
+	<img src="img/1.jpg" width="200" />
+		<p id="demo">点击按钮来改变img标签的内容。</p>-->
+		<button onclick="myFunction()">试一下</button>
+
+</body>
+
+<script>
+
+
+
+	function myFunction() {
+        dd.biz.util.invokeWorkbench({
+        app_url:"https://www.dingtalk.com",
+        app_info:{
+            app_tab_key:"123",
+            app_refresh_if_exist:true,
+            app_active_if_exist:true
+        },
+        onSuccess:function (result) {
+        },
+        onFail:function (err) {
+        }
+    })
+        }
+    onload = function () {
+        var dom = this.document.getElementById('span');
+        dom.onclick = function () {
+            this.document.getElementById("basImg")
+        }
+    }
+    setInterval(function(){
+
+        realSysTime(clock),1000
+
+    });
+
+    //显示当前时间
+
+    function realSysTime(clock){
+
+        var now=new Date();            //创建Date对象
+
+        var year=now.getFullYear();    //获取年份
+
+        var month=now.getMonth();    //获取月份
+
+        var date=now.getDate();        //获取日期
+
+        var day=now.getDay();        //获取星期
+
+        var hour=now.getHours();    //获取小时
+
+        var minu=now.getMinutes();    //获取分钟
+
+        var sec=now.getSeconds();    //获取秒钟
+
+        month=month+1;
+
+        var arr_week=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+
+        var week=arr_week[day];  //获取中文的星期
+
+        var time=year+"年"+month+"月"+date+"日 "+" "+((hour<10)?('0'+hour):hour)+":"+((minu<10)?('0'+minu):minu)+":"+((sec<10)?('0'+sec):sec);    //组合系统时间
+
+        clock.innerHTML=time;    //显示系统时间
+
+    }
+
+</script>
+
+
+</html>

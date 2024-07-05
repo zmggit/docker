@@ -1,0 +1,20 @@
+docker run -itd -p 24:22 --privileged --name archlinux archlinux:multilib-devel-20240101.0.204074  /usr/bin/init
+
+docker exec -it archlinux /bin/sh
+
+安装ssh 服务
+apt update && apt-get install -y openssh-server
+
+# 创建sshd工作目录
+ mkdir /var/run/sshd
+
+修改root密码
+passwd
+修改配置
+vim /etc/ssh/ssh_config
+
+Port 22
+PermitRootLogin yes
+
+启动
+service ssh start
