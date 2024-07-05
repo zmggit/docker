@@ -8,7 +8,7 @@ apt update && apt-get install -y openssh-server
 # 创建sshd工作目录
  mkdir /var/run/sshd
 
-修改root密码
+修改root密码  Apom@321
 passwd
 修改配置
 vim /etc/ssh/ssh_config

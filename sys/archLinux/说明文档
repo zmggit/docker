@@ -1,5 +1,21 @@
+
+docker run -p 24:22 -itd --privileged --name archlinux 5f2acac2b868  /usr/sbin/init
+
+
+
+docker exec -it archlinux /bin/sh
+
+iptables -L
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
 更新
-pacman -Syu
+ pacman -Syu --noconfirm
+
 添加
-pacman -S openssh
+pacman -S --noconfirm
+
+pacman -S python python-pip --noconfirm
+
+pacman -Rs python python-pip --noconfirm
+
 

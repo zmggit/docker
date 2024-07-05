@@ -15,6 +15,8 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C
 
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
 
+pacman-key adv --keyserver keyserver.ubuntu.com --recv-keys 6D42BDD116E0068F
+
 
 
 tee /etc/apt/sources.list <<-'EOF'
