@@ -96,8 +96,8 @@ mysql --ssl-ca=/var/lib/mysql/server-cert.pem --ssl-cert=/var/lib/mysql/server-c
 mysql --ssl-ca=/var/lib/mysql/ca.pem --ssl-cert=/var/lib/mysql/client-cert.pem --ssl-key=/var/lib/mysql/client-key.pem --ssl-cipher=AES128-SHA -u zmg -pApom@321
 
 #自定义手动
-mysql --ssl-ca=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/ca.pem --ssl-cert=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/client-cert.pem --ssl-key=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/client-key.pem  -u zmg -pApom@321 -h172.16.2.126 -P3232 --ssl-mode VERIFY_IDENTITY
-mysql --ssl-ca=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/ca.pem --ssl-cert=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/client-cert.pem --ssl-key=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/client-key.pem  -u zmg  -h172.16.2.126 -P3232
+ mysql --ssl-ca=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/sanssl/ca.crt --ssl-cert=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/sanssl/client.pem --ssl-key=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/sanssl/client.key -u zmg -pApom@321 -h172.16.2.126 -P3232 --ssl-mode VERIFY_CA --ssl-cipher=AES128-SHA
+
 
 ssl-ca=/var/lib/mysql/server-cert.pem
 ssl-cert=/var/lib/mysql/server-cert.pem
