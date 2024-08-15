@@ -1,14 +1,4 @@
-adPsUser:
-	docker exec -it postgres bin/bash
-	psql -U postgres  -p 5432
-	create user ${postgres} with password ${postgres};
-	create database ${[postgres]} owner ${postgres};
-	exit
-    #给用户授权
-	@psql -U postgres -d ${PostDb} -p 5432
-	@grant all privileges on database ${PostDb} to ${PostUser};
-	@grant usage on schema public to ${PostUser};
-	@grant all privileges on all tables in schema public to ${PostUser};
-	@grant all privileges on all sequences in schema public to ${PostUser};
-	@grant select,insert,update,delete on all tables in schema public to ${PostUser};
-	@grant all on schema public to ${PostUser};
+openssl req -new -x509 -days 3650 -nodes -text -out server.crt -keyout server.key -subj "/CN=<host name>"
+//必须要修改权限要不登录失败
+chmod 600 server.key
+chown postgres:postgres server.key
