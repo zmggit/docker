@@ -1,19 +1,19 @@
 version: "3.9"
 services:
-  postgres:
-    container_name: postgres
-    image: postgres:11.15
-    privileged: true
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_PASSWORD=123456
-      - TZ=Asia/Shanghai
-    volumes:
-      - /Users/zhumenggang/zhu_work/go/src/docker/postsql/data:/var/lib/postgresql/data
-    networks:
-      - app-tier
-    restart: always
+#  postgres:
+#    container_name: postgres
+#    image: postgres:11.15
+#    privileged: true
+#    ports:
+#      - 5432:5432
+#    environment:
+#      - POSTGRES_PASSWORD=123456
+#      - TZ=Asia/Shanghai
+#    volumes:
+#      - /Users/zhumenggang/zhu_work/go/src/docker/postsql/data:/var/lib/postgresql/data
+#    networks:
+#      - app-tier
+#    restart: always
 #  mongo:
 #    container_name: mongo
 #    image: mongo:4.4
@@ -98,6 +98,18 @@ services:
 #      networks:
 #          - app-tier
 #      restart: always
+
+  php7.4-swoole:
+      container_name: php7.4-swoole
+      image: 1551605159/php7.4-swoole
+      privileged: true
+      ports:
+        - 9003:9000
+      volumes:
+        - /Users/zhumenggang/zhu_work/go/src/docker/nginx/data:/var/www/html
+      networks:
+          - app-tier
+      restart: always
 
 networks:
   app-tier:
