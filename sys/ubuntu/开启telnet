@@ -1,11 +1,22 @@
 //安装
+内核转发未开启：如果内核转发未开启，Docker的端口映射可能不会正常工作。可以通过以下命令开启内核转发：
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+sysctl -p
+apt-get install libpam-modules
 apt-get install telnet -y && apt-get install telnetd -y && apt-get install net-tools -y && apt-get install xinetd -y
+
+//#安装rsyslog日志
+apt-get install rsyslog -y
+#检查版本rsyslogd -v#查询配置的登录认证日志存储位置
+启动 /usr/sbin/rsyslogd
+  查看登录失败cat /etc/rsyslog.d/50-default.conf#查询登录认证的日志cat /var/log/auth.log
 
 $sudo vi /etc/inetd.conf
 telnet stream tcp nowait telnetd /usr/sbin/tcpd/ /usr/sbin/in.telnetd
 telnet stream tcp nowait root   /usr/sbin/tcpd/ /usr/sbin/in.telnetd
 
-
+Apom@321
 vim /etc/xinetd.conf
 
 {
@@ -38,3 +49,6 @@ service xinetd restart
 netstat -a |grep telnet
 //检验xinetd是监听
 netstat -tulnp | grep xinetd
+
+//验证是否成功
+telnet -l aka 172.16.2.126 223
