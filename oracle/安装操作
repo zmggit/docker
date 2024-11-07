@@ -12,3 +12,32 @@ alter session set container=ORCLPDB;
 create user root identified by tiger;
 授权
 grant dba to root;
+
+切换数据库
+alter session set container=ORCLCDB;
+创建用户
+create user root2 identified by tiger;
+授权
+grant dba to root2;
+
+
+
+DEDICATED"（专用服务器模式）和"SHARED"（共享服务器模式
+
+lsnrctl status
+ lsnrctl reload
+
+ sqlplus root/tigher@ORCLCDB
+ sqlplus system/tigher@ORCLCDB
+ sqlplus sys/tigher@ORCLCDB
+
+ sqlplus root/tigher@ORCLPDB
+ sqlplus ORCLPDB/tigher@ORCLPDB
+ sqlplus sys/tigher@ORCLPDB
+
+
+
+
+
+
+

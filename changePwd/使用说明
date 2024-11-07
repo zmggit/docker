@@ -5,4 +5,8 @@ https://www.alipan.com/t/dTINGnnLZOun3KXJucTb
 docker import pychangepwd.tar  pychangepwd:1.0
 
 启动容器
-docker run -d --name pychangepwd  -it -p 9326:9326 -p 23:22 -v /opt/won-cloud:/opt/won-cloud 4ca7c5f0fc41 /bin/bash
+docker run -d --name pychangepwd  -it -p 9326:9326 -p 24:22 -v /Users/zhumenggang/zhu_work/python/src:/opt/won-cloud 694b19838927 /bin/bash
+
+docker run -d --name pychangepwd  -it -p 9326:9326 -p 24:22  694b19838927 /bin/bash
+启动项目
+/opt/won-cloud/psafe/psafe

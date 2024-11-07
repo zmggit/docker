@@ -1,20 +1,34 @@
-docker run -itd -p 24:22 --privileged --name archlinux archlinux:multilib-devel-20240101.0.204074  /usr/bin/init
 
-docker exec -it archlinux /bin/sh
+//docker run -itd -p 24:22 --privileged --name archlinux archlinux:multilib-devel-20240101.0.204074  /usr/bin/init
+
+docker run -itd -p 221:21 -p 223:23 -p 23:22  --privileged=true --name ubuntu ffb64c9b7e8b  /sbin/init
+
+
+docker exec -it ubuntu /bin/bash
 
 安装ssh 服务
-apt update && apt-get install -y openssh-server
+apt update && apt-get install -y openssh-server && apt install vim -y
+
 
 # 创建sshd工作目录
- mkdir /var/run/sshd
+mkdir /var/run/sshd
 
 修改root密码  Apom@321
 passwd
 修改配置
-vim /etc/ssh/ssh_config
+vim /etc/ssh/sshd_config
 
 Port 22
 PermitRootLogin yes
 
 启动
 service ssh start
+
+
+
+
+docker build -t my-sshd .
+
+docker run -d -p 2222:22 --name my-sshd my-sshd
+
+docker run -itd -p 221:21 -p 223:23 -p 222:22  --privileged --name  my-sshd  my-sshd

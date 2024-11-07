@@ -1,0 +1,40 @@
+//安装
+apt-get install telnet -y && apt-get install telnetd -y && apt-get install net-tools -y && apt-get install xinetd -y
+
+$sudo vi /etc/inetd.conf
+telnet stream tcp nowait telnetd /usr/sbin/tcpd/ /usr/sbin/in.telnetd
+telnet stream tcp nowait root   /usr/sbin/tcpd/ /usr/sbin/in.telnetd
+
+
+vim /etc/xinetd.conf
+
+{
+instances = 60
+log_type = SYSLOG authpriv
+log_on_success = HOST PID
+log_on_failure = HOST
+cps = 25 30
+}
+
+vim /etc/xinetd.d/telnet
+
+{
+        disable = no
+        flags = REUSE
+        socket_type = stream
+        wait = no
+        port = 223
+        user = root
+        server = /usr/sbin/telnetd
+        log_on_failure += USERID
+}
+
+//重启
+
+/etc/init.d/xinetd restart
+
+service xinetd restart
+//检验是否开启
+netstat -a |grep telnet
+//检验xinetd是监听
+netstat -tulnp | grep xinetd

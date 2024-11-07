@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
+    <meta name="referrer" content="origin">
+    <meta name="ASD.Meta.StopBounces" content="YES" />
+    <meta name="aplus-core" content="aplus.js">
+    <meta name="aplus-waiting" content="MAN" />
+    <title>阿里云盘快传</title>
+    <link rel="apple-touch-icon" href="https://img.alicdn.com/imgextra/i2/O1CN01DOYcs71v3B6bOemVM_!!6000000006116-2-tps-512-512.png" />
+    <link rel="icon" href="https://img.alicdn.com/imgextra/i1/O1CN01JDQCi21Dc8EfbRwvF_!!6000000000236-73-tps-64-64.ico">
+    <link rel="dns-prefetch" href="https://g.alicdn.com" />
+    <link rel="dns-prefetch" href="//gw.alicdn.com" />
+    <link rel="dns-prefetch" href="//img.alicdn.com" />
+    <link rel="preconnect" href="https://g.alicdn.com">
+    <link rel="preload" as="style" href="//g.alicdn.com/code/lib/antd/4.15.2/antd.css" />
+    <link rel="preload" as="script" href="//g.alicdn.com/code/lib/react/17.0.1/umd/react.production.min.js" />
+    <link rel="preload" as="script" href="//g.alicdn.com/code/lib/react-dom/17.0.1/umd/react-dom.production.min.js" />
+    <link rel="preload" as="script" href="https://g.alicdn.com/aliyun-drive-fe/aliyun-drive/4.9.0-transport/transport/bundle.js" />
+    <link rel="stylesheet" href="//g.alicdn.com/code/lib/antd/4.15.2/antd.css" />
+    <script type="text/javascript" src="https://g.alicdn.com/??aliyun-drive-fe/aliyun-drive-assets/0.0.3/js/browser-check.js,aliyun-drive-fe/aliyun-drive-assets/0.0.3/js/aplus-extend.js" ></script>
+  </head>
+  <body>
+    <script> (function (d) { var t=d.createElement("script"); t.type="text/javascript"; t.id="beacon-aplus"; t.src="//g.alicdn.com/alilog/mlog/aplus_v2.js"; t.setAttribute("exparams","clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx"); t.async=true; with(document)with(body)with(insertBefore(t,firstChild));})(document); </script>
+    <div id="root"></div>
+    <script>
+      var Global = {
+        app_id: '5dde4e1bdf9e4966b387ba58f4b3fdc3',
+        aliyun_drive_env: 'prod',
+        app_mac_download_link: 'https://cdn-gray.aliyundrive.net/downloads/apps/desktop/aDrive-6.5.0.dmg',
+        app_windows_download_link: 'https://cdn-gray.aliyundrive.net/downloads/apps/desktop/aDrive-6.5.0.exe',
+        auth_endpoint: 'https://auth.aliyundrive.com',
+        callapp_fallback_url: 'https://www.aliyundrive.com/applink',
+        cdnHost: 'https://g.alicdn.com/aliyun-drive-fe/aliyun-drive/4.9.0-transport/transport',
+        client_id:  '25dzX3vbYqktVxyX',
+        enable_to_app_share_file: 'true',
+        member_endpoint: 'https://member.aliyundrive.com',
+        open_share: 'true',
+        operation_fragment_url: 'https://pre-wormhole.tmall.com/wh/fragment/adrive/act/shareOperationConfig?wh_biz=tm&wh_showError=true&&wh_callback=true',
+        pds_endpoint: 'https://api.aliyundrive.com',
+        pdsapi_endpoint: 'https://pdsapi.aliyundrive.com',
+        redirect_uri: '',
+        save_share_ad: 'true',
+        sv_endpoint: 'https://api.aliyundrive.com',
+        user_page_path: '/er/u/',
+        open_app_url: 'https://pages.aliyundrive.com/mobile-page/web/openapp.html',
+        user_endpoint: 'https://user.aliyundrive.com',
+      };
+    </script>
+    <script type="text/javascript" src="//g.alicdn.com/code/lib/react/17.0.1/umd/react.production.min.js"></script>
+    <script type="text/javascript" src="//g.alicdn.com/code/lib/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
+    <script type="text/javascript" src="//g.alicdn.com/alilog/mlog/aplus_v2.js" id="beacon-aplus" exparams="clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx"></script>
+    <script type="text/javascript" src="https://g.alicdn.com/aliyun-drive-fe/aliyun-drive/4.9.0-transport/transport/bundle.js"></script>
+
+    <script type="text/javascript" async>
+      if ('prod' === 'daily' || 'prod' === 'stg') {
+        var ua = navigator.userAgent || '';
+        var isAndroid = /android/i.test(ua);
+        var isIos = /iphone|ipad|ipod/i.test(ua);
+        var isMobile = isAndroid || isIos;
+        if (isMobile) {
+          var consoleUrl = 'https://g.alicdn.com/code/lib/vConsole/3.11.0/vconsole.min.js';
+          var consoleJS = document.createElement("link");
+          consoleJS.rel = 'preload';
+          consoleJS.as = 'script';
+          consoleJS.href = consoleUrl;
+          consoleJS.onload = function () {
+            var runConsoleJS = document.createElement("script");
+            runConsoleJS.src = consoleUrl;
+            runConsoleJS.onload = function () {
+              var vConsole = new VConsole();
+            }
+            document.head.appendChild(runConsoleJS);
+          }
+          document.head.appendChild(consoleJS);
+        }
+      }
+    </script>
+  </body>
+</html>

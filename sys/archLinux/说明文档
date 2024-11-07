@@ -1,9 +1,9 @@
 
-docker run -p 24:22 -itd --privileged --name archlinux 5f2acac2b868  /usr/sbin/init
+docker run -p 24:22 -itd --privileged --name ubuntu2 ffb64c9b7e8b
 
 
 
-docker exec -it archlinux /bin/sh
+docker exec -it ubuntu2 /bin/sh
 
 iptables -L
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
