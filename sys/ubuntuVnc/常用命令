@@ -1,0 +1,53 @@
+docker exec -it ubuntu20.04vnc /bin/bash
+
+apt-get install telnet -y && apt-get install telnetd -y && apt-get install net-tools -y && apt-get install xinetd -y
+
+
+//证书
+openssl req -x509 -newkey rsa -days 3650 -nodes -config /usr/lib/ssl/openssl.cnf \
+-keyout vnc-server-private.pem -out vnc-server.pem \
+-subj '/CN=172.16.43.1' -addext "subjectAltName=IP:172.16.43.1,IP:172.17.0.5"
+
+//复制文件
+docker cp 18901b95cca8:/home/limstorm/.vnc/ssl /var/www/vncssl
+
+
+vi ~/.vnc/config
+session=ubuntu
+geometry=1600x900
+localhost=no
+depth=24
+X509Cert=/home/limstorm/.vnc/ssl/vnc-server.pem
+X509Key=/home/limstorm/.vnc/ssl/vnc-server-private.pem
+SecurityTypes=X509Vnc
+
+
+2.2 重置密码
+如果忘记 tightvnc 的登陆密码，则 :
+
+$ rm ~/.vnc/passwd
+
+$ vncpasswd
+
+
+
+
+启动VNC服务器
+vncserver  :1 -SecurityTypes=tlsvnc
+
+vncserver \
+-rfbport 5901 \
+-fp /usr/share/fonts/X11/misc/,/usr/share/fonts/X11/Type1/,/usr/share/fonts/X11/75dpi/,/usr/share/fonts/X11/100dpi/ \
+-co /etc/X11/rgb \
+-depth 24 \
+-geometry 1920x1080 \
+
+
+vncserver -localhost no :1
+-SecurityTypes=tlsvnc \
+-X509Cert ~/.vnc/ssl/vnc-server.pem \
+-X509Key ~/.vnc/ssl/vnc-server-private.pem
+
+vncserver -rfbport 5901 -ssl -cert ~/.vnc/ssl/vnc-server.pem -key ~/.vnc/ssl/vnc-server.key
+关闭
+vncserver -kill :1

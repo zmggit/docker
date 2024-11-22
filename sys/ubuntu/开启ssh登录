@@ -1,8 +1,11 @@
 
 //docker run -itd -p 24:22 --privileged --name archlinux archlinux:multilib-devel-20240101.0.204074  /usr/bin/init
 
-docker run -itd -p 221:21 -p 223:23 -p 23:22  --privileged=true --name ubuntu ffb64c9b7e8b  /sbin/init
+docker run -itd -p 221:21  -p 24:22  --privileged=true --name ubuntu ffb64c9b7e8b  /sbin/init
 
+docker run -itd -p 24:22 --name ubuntu24.04 981912c48e9a /bin/bash
+
+docker run -itd -p 24:22 -p 5901:5901 --name ubuntu24.04vnc fec8bfd95b54 /bin/bash
 
 docker exec -it ubuntu /bin/bash
 
@@ -24,6 +27,10 @@ PermitRootLogin yes
 启动
 service ssh start
 
+//删除公钥
+ssh-keygen -R  [172.16.2.126]:24
+
+ssh-keygen -R 172.16.2.126
 
 
 

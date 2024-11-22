@@ -54,3 +54,5 @@ netstat -tulnp | grep xinetd
 telnet 172.16.2.126 223 //默认使用的是当前系统使用的用户当做登录用户
 telnet -l aka 172.16.2.126 223
 telnet -l root 172.16.2.126 223
+
+/etc/securetty

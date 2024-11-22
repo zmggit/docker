@@ -1,0 +1,20 @@
+{
+  "insecure-registries": [
+    "https://harbor.won-cloud.com"
+
+  ],
+  "dns" : [
+    "114.114.114.114",
+    "8.8.8.8"
+  ],
+  "registry-mirrors": [
+    "https://dockerpull.com",
+    "https://hub.uuuadc.top",
+    "https://docker.anyhub.us.kg",
+    "https://dockerhub.jobcher.com",
+    "https://dockerhub.icu",
+    "https://docker.ckyl.me",
+    "https://docker.awsl9527.cn"
+  ]
+
+}

@@ -13,12 +13,21 @@
     "harbor.won-cloud.com"
   ],
   "registry-mirrors": [
-    "https://dockerpull.com",
-    "https://hub.uuuadc.top",
-    "https://docker.anyhub.us.kg",
-    "https://dockerhub.jobcher.com",
-    "https://dockerhub.icu",
-    "https://docker.ckyl.me",
-    "https://docker.awsl9527.cn"
+    "https://hub.xdark.top",
+    "https://hub.littlediary.cn",
+    "https://dockerpull.org",
+    "https://hub.crdz.gq",
+    "https://docker.1panel.live",
+    "https://docker.unsee.tech",
+    "https://docker.m.daocloud.io",
+    "https://docker.kejilion.pro",
+    "https://registry.dockermirror.com",
+    "https://hub.rat.dev",
+    "https://dhub.kubesre.xyz",
+    "https://docker.nastool.de",
+    "https://docker.udayun.com",
+    "https://docker.rainbond.cc",
+    "https://hub.geekery.cn",
+    "https://docker.1panelproxy.com"
   ]
 }
