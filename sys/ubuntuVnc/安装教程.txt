@@ -1,0 +1,132 @@
+
+注意
+vncserver \
+-rfbport 5901 \
+-fp /usr/share/fonts/X11/misc/,/usr/share/fonts/X11/Type1/,/usr/share/fonts/X11/75dpi/,/usr/share/fonts/X11/100dpi/ \
+-co /etc/X11/rgb \
+-depth 24 \
+-geometry 1920x1080 \
+-SecurityTypes=tlsvnc \
+-X509Cert ~/.vnc/ssl/vnc-server.pem \
+-X509Key ~/.vnc/ssl/vnc-server.key
+
+ 一、创建容器
+1、创建容器
+参数 --ulimit memlock=-1:-1 在 Docker 容器或系统服务中设置时，具有以下含义：
+
+-1（软限制）：表示没有软限制，进程可以锁定的内存量没有上限。
+-1（硬限制）：表示没有硬限制，进程可以锁定的内存量同样没有上限。
+
+docker pull ubuntu:20.04
+docker run -itd --privileged --name=ubuntu20.04vnc --ulimit memlock=-1:-1 -p 22666:22 -p 5901:5901  /bin/bash
+
+docker run -itd --privileged --name=ubuntu20.04vnc  -p 22666:22 -p 5901:5901  223c04ea1fd5 /bin/bash
+2、进入容器
+docker exec -it ubuntu20.04vnc /bin/bash
+
+
+
+二、创建普通用户
+1、更新apt源以及sudo
+apt update && apt install -y sudo
+
+2、创建用户
+adduser aka
+
+3、赋予用户sudo权限
+usermod -aG sudo aka
+
+4、切换为limstorm用户
+su aka
+
+5、设置root用户密码，ABCD#1234
+sudo passwd root
+
+6、安装vim并更换apt源为阿里源
+sudo apt install vim && sudo vim /etc/apt/sources.list
+```
+deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+```
+
+7、更新apt源
+sudo apt update
+
+
+
+三、安装xfce桌面环境，并安装tigervnc, 使用普通用户
+1、安装xfce以及tigervnc，选择gdm3启动器
+sudo apt install xfce4 tigervnc-standalone-server
+中间依次输入：6、10、18、30、1、1
+
+2、启动dbus service(xfce4启动需连接dbus)
+sudo service dbus start
+
+3、设置vnc密码，ABCD#1234
+vncpasswd
+中间依次输入：密码、密码、n
+
+4、配置vnc xstartup
+vim ~/.vnc/xstartup
+```
+#!/bin/sh
+xsetroot -solid grey
+
+startxfce4 &
+```
+
+5、启动vncserver，不需要设置geometry,默认会自动调整;:1表示第一个窗口，其端口号为5901(5900+1)
+vncserver -localhost no :1
+vncserver -kill :*
+vncserver -list
+
+6、tigervncviewer连接，连接地址使用DockerIP:5901或者宿主机IP:映射端口
+下载地址：https://sourceforge.net/projects/tigervnc/files/stable/1.13.1/，根据所需下载不同系统版本
+
+7、停止vncserver
+vncserver -kill :1
+vncserver -kill :*
+
+认证方式
+None, VncAuth, Plain, TLSNone, TLSVnc, TLSPlain, X509None, X509Vnc, X509Plain, RA2, RA2ne, RA2_256 and RA2ne_256. Default is TLSVnc,VncAuth
+8 tls X509Vnc
+//None
+vncserver -SecurityTypes None --I-KNOW-THIS-IS-INSECURE -localhost no
+//默认
+vncserver -SecurityTypes TLSVnc,VncAuth -localhost no
+//X509Vnc
+vncserver -SecurityTypes X509Vnc -localhost no
+
+vncserver -SecurityTypes X509Vnc -X509Cert /var/www/ssl/server.crt -X509Key /var/www/ssl/server.key -localhost no
+
+
+//VncAuth 不加密 密码认证（通过）
+vncserver -SecurityTypes VncAuth -localhost no
+
+//X509Plain 加密 不使用密码
+vncserver -SecurityTypes X509Plain -localhost no
+vncserver -SecurityTypes X509Plain -X509Cert /home/aka/.vnc/78d393713e0b-SrvCert.pem -X509Key /home/aka/.vnc/78d393713e0b-SrvKey.pem -localhost no
+//X509Vnc 加密 使用密码(通过)
+vncserver -SecurityTypes X509Vnc -localhost no
+
+//Plain
+vncserver -SecurityTypes Plain -localhost no
+
+//X509None 使用 X.509 证书进行认证，但不使用加密
+vncserver -SecurityTypes X509None -localhost no
+
+
+//TLSVnc 使用 TLS 加密连接， VNC 密码认证
+vncserver -SecurityTypes TLSVnc
+
+TLSPlain
+vncserver -SecurityTypes TLSPlain
+

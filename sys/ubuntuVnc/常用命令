@@ -8,13 +8,18 @@ openssl req -x509 -newkey rsa -days 3650 -nodes -config /usr/lib/ssl/openssl.cnf
 -keyout vnc-server-private.pem -out vnc-server.pem \
 -subj '/CN=172.16.43.1' -addext "subjectAltName=IP:172.16.43.1,IP:172.17.0.5"
 
-//复制文件
-docker cp 18901b95cca8:/home/limstorm/.vnc/ssl /var/www/vncssl
+//容器复制宿主机
+docker cp 78d393713e0b:/home/limstorm/.vnc/ssl /var/www/vncssl
+
+//宿主机到容器
+docker cp /var/www/sanssl server.key 78d393713e0b:/home/aka/.vnc/ssl
+docker cp /var/www/sanssl server.cert 78d393713e0b:/home/aka/.vnc/ssl
+
 
 
 vi ~/.vnc/config
 session=ubuntu
-geometry=1600x900
+geometry=1980x1024
 localhost=no
 depth=24
 X509Cert=/home/limstorm/.vnc/ssl/vnc-server.pem
@@ -51,3 +56,15 @@ vncserver -localhost no :1
 vncserver -rfbport 5901 -ssl -cert ~/.vnc/ssl/vnc-server.pem -key ~/.vnc/ssl/vnc-server.key
 关闭
 vncserver -kill :1
+
+
+
+
+//容器到宿主机
+docker cp 78d393713e0b:/var/www/ssl/vnc-server.csr /var/www/ssl/vnc-server.csr
+docker cp 78d393713e0b:/var/www/ssl/vnc-server.key /var/www/ssl/vnc-server.key
+docker cp 78d393713e0b:/var/www/ssl/vnc-server.crt /var/www/ssl/vnc-server.crt
+
+//宿主机到容器
+docker cp /var/www/ssl/server.crt 78d393713e0b:/var/www/ssl/server.crt
+docker cp /var/www/ssl/server.key 78d393713e0b:/var/www/ssl/server.key

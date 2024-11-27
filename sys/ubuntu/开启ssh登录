@@ -3,18 +3,21 @@
 
 docker run -itd -p 221:21  -p 24:22  --privileged=true --name ubuntu ffb64c9b7e8b  /sbin/init
 
+
+docker run -itd -p 9326:9326 -p 24:22  -v /opt/won-cloud/:/opt/won-cloud/ --privileged=true --name debian10 69530eaa9e7e /bin/bash
+
+
 docker run -itd -p 24:22 --name ubuntu24.04 981912c48e9a /bin/bash
 
 docker run -itd -p 24:22 -p 5901:5901 --name ubuntu24.04vnc fec8bfd95b54 /bin/bash
+
+/opt/won-cloud/
+
 
 docker exec -it ubuntu /bin/bash
 
 安装ssh 服务
 apt update && apt-get install -y openssh-server && apt install vim -y
-
-
-# 创建sshd工作目录
-mkdir /var/run/sshd
 
 修改root密码  Apom@321
 passwd

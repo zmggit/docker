@@ -1,0 +1,36 @@
+//校验
+openssl x509 -in server.cert -text -noout
+
+# 生成根证书私钥
+openssl ecparam -out ca.key -name prime256v1 -genkey
+# 生成根证书请求
+openssl req  -new -key ca.key -out ca.csr  -config ../server.conf
+# 自签根证书
+openssl x509 -req -days 365 -in ca.csr -signkey ca.key -sha256 -extfile ../openssl.cnf -extensions v3_ca -out ca.crt
+//校验
+openssl x509 -in ca.crt -text -noout
+
+
+# 生成服务端私钥
+openssl ecparam -out server.key -name prime256v1 -genkey
+# 生成服务端 CSR
+openssl req -new -key server.key -out server.csr -config ../server.conf
+# 使用根证书签署服务端证书
+openssl x509 -req -days 365 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -sha256 -extfile ../openssl.cnf -extensions v3_req -out server.crt
+//校验
+openssl x509 -in server.crt -text -noout
+
+
+# 生成客户端私钥
+openssl ecparam -out client.key -name prime256v1 -genkey
+# 生成客户端 CSR
+openssl req  -new -key client.key -out client.csr -config ../server.conf
+# 使用根证书签署客户端证书
+openssl x509 -req -days 365 -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -sha256 -extfile ../openssl.cnf -extensions v3_req -out client.crt
+//校验
+openssl x509 -in client.crt -text -noout
+
+
+//宿主机到容器
+docker cp /var/www/ssl/server.crt 78d393713e0b:/var/www/ssl/server.crt
+docker cp /var/www/ssl/server.key 78d393713e0b:/var/www/ssl/server.key

@@ -1,4 +1,11 @@
 openssl req -x509 -newkey rsa -days 365 -nodes -config /usr/lib/ssl/openssl.cnf -keyout vnc-server.key -out vnc-server.pem -subj '/CN=172.16.43.1' -addext "subjectAltName=IP:172.16.43.1"
 
-X509Cert=/home/你的用户名/.vnc/vnc-server.pem
-X509Key=/home/你的用户名/.vnc/vnc-server-private.pem
+
+openssl x509 -in 78d393713e0b-SrvCert.pem -out ca.crt
+
+openssl x509 -in 78d393713e0b-SrvCert.pem -text -noout
+
+
+openssl x509 -text -in  ca.crt
+openssl x509 -text -in78d393713e0b-SrvCert.pem
+openssl x509 -text -in78d393713e0b-SrvKey.pem
