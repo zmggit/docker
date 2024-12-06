@@ -1,0 +1,12 @@
+登录mongo
+mongo 127.0.0.1:27017
+切换到 admin 数据库（存在切换不存在创建）
+use admin
+登录超管
+db.auth("root", "123456")
+查看当前库
+db
+创建用户
+db.createUser({user:"testdb",pwd:"testdb@123",roles:[{"role":"dbOwner","db":"test_db"}]})
+插入数据
+db.test.insert({name:"test"})

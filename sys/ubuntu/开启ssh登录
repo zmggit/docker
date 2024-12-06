@@ -1,7 +1,7 @@
 
 //docker run -itd -p 24:22 --privileged --name archlinux archlinux:multilib-devel-20240101.0.204074  /usr/bin/init
 
-docker run -itd -p 221:21  -p 24:22  --privileged=true --name ubuntu ffb64c9b7e8b  /sbin/init
+docker run -itd  -p 24:22 -v /Users/zhumenggang/zhu_work/go/src/docker/sys/ubuntuffm/data:/var/www  --privileged=true --name ubuntuffm ffb64c9b7e8b    /bin/bash
 
 
 docker run -itd -p 9326:9326 -p 24:22  -v /opt/won-cloud/:/opt/won-cloud/ --privileged=true --name debian10 69530eaa9e7e /bin/bash
