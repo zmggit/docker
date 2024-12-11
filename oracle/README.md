@@ -7,3 +7,4 @@ sid  ORCLCDB
 |   172.16.43.1  | root   | tiger | 1521 | ORCLPDB | 基本   |        |
 |   172.16.43.1  | SYSTEM | oracle | 1521 | ORCLPDB | 基本   | 默认     |
 |   172.16.43.1  | SYS    | oracle | 1521 | ORCLPDB | 基本   | sysdba |
+|   172.16.43.1  | SYS    | oracle | 1521 | ORCLCDB | 基本   | SID    |

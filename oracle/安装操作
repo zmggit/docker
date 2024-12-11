@@ -6,19 +6,28 @@ docker run -d -p 1521:1521 -p 5502:5500  -e ORACLE_SID=ORCLCDB  -e ORACLE_PDB=OR
 docker exec -it oracle_19c /bin/bash
 登录sqlplus 创建PDB用户
 sqlplus / as sysdba
-切换数据库
+
+//查看pdb库
+ show pdbs
+//查看用户
+SELECT username FROM dba_users;
+
+
+切换数据库(SERVER)
 alter session set container=ORCLPDB;
 创建用户
-create user root identified by tiger;
-授权
-grant dba to root;
+create user akb identified by tiger;
+授权(小写的要双引号)
+grant dba to AKB;
+grant dba to "aka";
 
-切换数据库
+
+切换数据库(SID)
 alter session set container=ORCLCDB;
 创建用户
-create user root2 identified by tiger;
+create user AKB identified by tiger;
 授权
-grant dba to root2;
+grant dba to AKB;
 
 
 

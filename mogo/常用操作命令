@@ -4,8 +4,12 @@ mongo 127.0.0.1:27017
 use admin
 登录超管
 db.auth("root", "123456")
+db.auth("root", "password")
 查看当前库
 db
+查看所有用户
+db.getUsers()
+
 创建用户
 db.createUser({user:"testdb",pwd:"testdb@123",roles:[{"role":"dbOwner","db":"test_db"}]})
 插入数据
