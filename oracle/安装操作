@@ -11,6 +11,17 @@ sqlplus / as sysdba
  show pdbs
 //查看用户
 SELECT username FROM dba_users;
+//监听
+lsnrctl status
+//查看配置是否正确
+tnsping MYDB
+
+
+//配置路径
+cd /opt/oracle/product/19c/dbhome_1/network/admin
+   /opt/oracle/product/19c/dbhome_1/network/admin/listener.ora
+
+
 
 
 切换数据库(SERVER)
@@ -38,7 +49,7 @@ lsnrctl status
 
  sqlplus root/tigher@ORCLCDB
  sqlplus system/tigher@ORCLCDB
- sqlplus sys/tigher@ORCLCDB
+ sqlplus SYS/oracle@ORCLCDB
 
  sqlplus root/tigher@ORCLPDB
  sqlplus ORCLPDB/tigher@ORCLPDB
