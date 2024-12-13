@@ -7,19 +7,42 @@ docker exec -it oracle_19c /bin/bash
 登录sqlplus 创建PDB用户
 sqlplus / as sysdba
 
+//创建pdb
+cd /opt/oracle/oradata/ORCLCDB/pdbseed
+//创建pdb
+create pluggable database ZMGPDB admin user zmg identified by 123456
+file_name_convert=('/opt/oracle/oradata/ORCLCDB/pdbseed','/opt/oracle/oradata/ORCLCDB/ZMGPDB');
+
+//查看pdb 路径
+select name from v$datafile where con_id=(select con_id from v$pdbs where name='PDB$SEED');
+//开启pdb
+alter pluggable database ZMGPDB open;
+//alter session set container=ZMGPDB;
+
+
+
 //查看pdb库
  show pdbs
 //查看用户
 SELECT username FROM dba_users;
+//监听
+lsnrctl status
+//查看配置是否正确
+tnsping MYDB
+//配置路径
+cd /opt/oracle/product/19c/dbhome_1/network/admin
 
+//oracle  连接 cdb时
+c##
 
 切换数据库(SERVER)
 alter session set container=ORCLPDB;
 创建用户
-create user akb identified by tiger;
+create user AKB identified by tiger;
 授权(小写的要双引号)
 grant dba to AKB;
 grant dba to "aka";
+grantgrant dba to "aa";
 
 
 切换数据库(SID)
@@ -38,7 +61,7 @@ lsnrctl status
 
  sqlplus root/tigher@ORCLCDB
  sqlplus system/tigher@ORCLCDB
- sqlplus sys/tigher@ORCLCDB
+ sqlplus SYS/oracle@ORCLCDB
 
  sqlplus root/tigher@ORCLPDB
  sqlplus ORCLPDB/tigher@ORCLPDB
