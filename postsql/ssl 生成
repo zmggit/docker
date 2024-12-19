@@ -1,3 +1,33 @@
+服务器端需生成三个文件: root.crt(根证书)、server.crt(服务器证书)、server.key(服务器私钥)
+
+
 openssl genrsa -des3 -out server.key 2048
 openssl rsa -in server.key -out server.key
 chmod 400 server.key
+
+服务器端配置
+postgresql的ssl配置默认是关闭的，需更改配置文件进行开启
+$ vi /var/lib/postgresql/data/postgresql.conf
+ssl=on
+ssl_ca_file='root.crt'
+ssl_key_file='server.key'
+ssl_cert_file='server.crt'
+
+还需要更改服务器的pg_hba.conf文件禁止用户以非SSL连接数据库
+
+$ vi /var/lib/postgresql/data/pg_hba.conf
+# host all all all md5
+hostssl all all 0.0.0.0/0 cert
+
+然后重启postgresql
+
+客户端
+生成客户端私钥
+openssl genrsa -des3 -out postgresql.key 2048
+
+客户端私钥生成后，可不移除密码，为简便操作，此处进行移除
+ openssl rsa -in postgresql.key -out postgresql.key
+生成客户端csr文件
+ openssl req -new -key postgresql.key -out postgresql.csr
+生成客户端证书
+  openssl x509 -req -days 3650 -in postgresql.csr -CA root.crt -CAkey server.key -out postgresql.crt -CAcreateserial
