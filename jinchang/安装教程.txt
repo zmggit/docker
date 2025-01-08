@@ -1,0 +1,14 @@
+//官网下载
+https://download.kingbase.com.cn/xzzx/index.htm
+//加载镜像
+docker load -i /Users/zhumenggang/zhu_work/down/jinchang/kdb_aarch64_V009R001C002B0014.tar
+//启动容器
+docker run -d  -p 4321:54321 --restart=always -v /Users/zhumenggang/zhu_work/go/src/docker/jinchang/data:/home/kingbase/userdata/data   --name=kingbase --privileged=true -e NEED_START=yes -e DB_USER=kingbase -e DB_PASSWORD=123456 -e DB_MODE=oracle  kingbase_v009r001c002b0014_single_arm:v1
+//进入容器
+docker exec -it kingbase /bin/bash
+//查看状态
+sys_ctl -D /home/kingbase/userdata/data/ status
+查看密码
+//docker inspect dm8
+//登录
+ksql -Ukingbase -d test -p54321
