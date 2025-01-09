@@ -13,6 +13,7 @@
     "harbor.won-cloud.com"
   ],
   "registry-mirrors": [
+    "https://docker-0.unsee.tech",
     "https://hub.xdark.top",
     "https://hub.littlediary.cn",
     "https://dockerpull.org",
