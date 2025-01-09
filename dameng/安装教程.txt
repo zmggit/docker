@@ -10,3 +10,15 @@ docker exec -it dm8 /bin/bash
 docker inspect dm8
 //登录
 /opt/dmdbms/bin/disql SYSDBA/SYSDBA_dm001
+//创建数据库
+create tablespace "TEST" datafile '/opt/dmdbms/data/TEST.DBF' size 128 autoextend on next 100 maxsize 10240 CACHE = NORMAL encrypt with RC4;
+//查看用户列表
+SELECT username, default_tablespace FROM dba_users WHERE username = 'TEST';
+//创建用户
+create user "TEST" identified by "Dameng@123" hash with SHA512 salt
+encrypt by "123456"
+default tablespace "TEST"
+default index tablespace "TEST";
+grant "PUBLIC","SOI" to "TEST";
+修改用户到指定表空间
+ALTER USER TEST DEFAULT TABLESPACE TEST;
