@@ -1,19 +1,23 @@
-//官网下载
-https://download.kingbase.com.cn/xzzx/index.htm
-//加载镜像
-docker load -i /Users/zhumenggang/zhu_work/down/jinchang/kdb_aarch64_V009R001C002B0014.tar
-//启动容器
-//arm
-docker run -d  -p 4321:54321 --restart=always -v /Users/zhumenggang/zhu_work/go/src/docker/jinchang/data:/home/kingbase/userdata/data   --name=kingbase --privileged=true -e NEED_START=yes -e DB_USER=kingbase -e DB_PASSWORD=123456 -e DB_MODE=oracle  kingbase_v009r001c002b0014_single_arm:v1
-//x86
-docker run -d  -p 4321:54321 --restart=always -v /var/www/Db/kingbase/data:/home/kingbase/userdata/data   --name=kingbase --privileged=true -e NEED_START=yes -e DB_USER=kingbase -e DB_PASSWORD=123456 -e DB_MODE=oracle  kingbase_v009r001c002b0014_single_x86:v1
+Redis 6.0 开始引入
+
+@read：读取权限
+@write：写入权限
+@all：所有权限
+~pattern：访问特定模式的键
 
 
-//进入容器
-docker exec -it kingbase /bin/bash
-//查看状态
-sys_ctl -D /home/kingbase/userdata/data/ status
-查看密码
-//docker inspect dm8
-//登录
-ksql -Ukingbase -d test -p54321
+redis 添加用户
+登录redis
+redis-cli
+auth 123456
+//添加带用户名和密码的用户
+ACL SETUSER aka on >666666 ~* +@all
+
+//修改用户
+ACL SETUSER aka on >123456789 ~secret:* +@read
+ACL SETUSER aka on >123456789 ~* +@all
+//删除用户
+ACL DELUSER aka
+//验证登录
+redis-cli -u redis://myuser:mypassword@localhost:6379
+
