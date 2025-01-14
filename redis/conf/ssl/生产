@@ -1,0 +1,19 @@
+
+openssl genrsa -out ca.key 2048
+openssl req -new -sha256 -out ca.csr -key ca.key -config ./ca.conf
+openssl x509 -req -days 3650 -in ca.csr -signkey ca.key -out ca.crt
+
+
+openssl req -new -x509 -days 365 -keyout ca.key -out ca.crt -subj "/CN=172.16.2.126" -nodes -nodes
+
+
+//服务端
+ //私钥
+openssl genrsa -out redis.key 2048
+openssl req -new -key redis.key -out redis.csr -subj "/CN=172.16.2.126"
+openssl x509 -req -in redis.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out redis.crt -days 365
+
+//客户端
+openssl genrsa -out client.key 2048
+openssl req -new -key client.key -out client.csr -subj "/CN=172.16.2.126"
+openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt -days 365

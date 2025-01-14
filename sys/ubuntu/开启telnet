@@ -56,3 +56,7 @@ telnet -l aka 172.16.2.126 223
 telnet -l root 172.16.2.126 223
 
 /etc/securetty
+
+
+docker commit -a "1551605159" -m "ubuntu24.04telssh" 61d476dfabed6a5db68737d7f4857a3b99830b7f1486cee12c1f7cdfcc9e8b44 1551605159/ubuntu24.04:telssh
+docker push  1551605159/ubuntu24.04:telssh

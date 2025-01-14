@@ -1,3 +1,15 @@
+
+安装redis
+docker run -d --privileged --name=redis7  -p 6379:6379 -v /Users/zhumenggang/zhu_work/go/src/docker/redis/conf/redis.conf:/etc/redis/redis.conf -v /Users/zhumenggang/zhu_work/go/src/docker/redis/data:/data -v /Users/zhumenggang/zhu_work/go/src/docker/redis/logs:/logs e48e4ac2fa6b1dc2bb9abc9278df84653d3b38d5db82a2d414d3814f296e388e  redis-server /etc/redis/redis.conf  /bash
+docker run -d --privileged -u root --name=redis7  -p 6379:6379 -v /Users/zhumenggang/zhu_work/go/src/docker/redis/conf:/etc/redis  -v /Users/zhumenggang/zhu_work/go/src/docker/redis/data:/data -v /Users/zhumenggang/zhu_work/go/src/docker/redis/logs:/logs e48e4ac2fa6b1dc2bb9abc9278df84653d3b38d5db82a2d414d3814f296e388e  redis-server /etc/redis/redis.conf
+
+docker run -d --privileged -u root --name=redis7  -p 6379:6379 -p 6378:6378 -v /Users/zhumenggang/zhu_work/go/src/docker/redis/conf:/etc/redis  -v /Users/zhumenggang/zhu_work/go/src/docker/redis/data:/data -v /Users/zhumenggang/zhu_work/go/src/docker/redis/logs:/logs e48e4ac2fa6b1dc2bb9abc9278df84653d3b38d5db82a2d414d3814f296e388e  redis-server /etc/redis/redis.conf
+
+
+ls -ld /tmp
+chmod 644 /etc/redis/redis.conf
+chown 999:999 /etc/redis/redis.conf
+
 Redis 6.0 开始引入
 
 @read：读取权限
@@ -16,8 +28,18 @@ ACL SETUSER aka on >666666 ~* +@all
 //修改用户
 ACL SETUSER aka on >123456789 ~secret:* +@read
 ACL SETUSER aka on >123456789 ~* +@all
+
+ACL SETUSER akb on >Apom@321 ~* +@all
 //删除用户
 ACL DELUSER aka
 //验证登录
 redis-cli -u redis://myuser:mypassword@localhost:6379
+//最终落盘
+config rewrite
+
+# 列出所有用户
+ACL LIST
+
+# 获取特定用户的详细信息
+ACL GETUSER someuser
 
