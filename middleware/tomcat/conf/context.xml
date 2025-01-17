@@ -28,4 +28,18 @@
     <!--
     <Manager pathname="" />
     -->
+    <Host name="localhost"  appBase="webapps"
+          unpackWARs="true" autoDeploy="true" reloadable="true">
+    </Host>
+
+    <Resources>
+        <JarScanFilter>
+            <JarScanFilter defaultSkip="true">
+                <include>myapp-*.jar</include>
+                <exclude>commons-logging-*.jar</exclude>
+                <exclude>log4j-*.jar</exclude>
+            </JarScanFilter>
+        </JarScanFilter>
+    </Resources>
+
 </Context>

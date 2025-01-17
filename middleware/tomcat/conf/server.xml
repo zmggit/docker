@@ -161,7 +161,7 @@
       </Realm>
 
       <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true">
+            unpackWARs="true" autoDeploy="true" reloadable="true">
 
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
@@ -176,6 +176,10 @@
                prefix="localhost_access_log" suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
 
+          
+<!--          <Context path="/" docBase="/Users/zhumenggang/zhu_work/go/src/docker/middleware/tomcat/webapps/Admin" reloadable="true" debug="0">-->
+
+          
       </Host>
     </Engine>
   </Service>

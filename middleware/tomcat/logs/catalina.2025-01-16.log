@@ -1,0 +1,151 @@
+16-Jan-2025 11:05:21.833 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:05:21.848 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+16-Jan-2025 11:05:21.856 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:05:21.859 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:05:22.464 WARNING [main] org.apache.tomcat.util.digester.SetPropertiesRule.begin Match [Server/Service/Engine/Host] failed to set property [reloadable] to [true]
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.98
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Dec 5 2024 19:50:29 UTC
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.98.0
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.10.11-linuxkit
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          aarch64
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.5+11-LTS
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+16-Jan-2025 11:05:22.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+16-Jan-2025 11:05:22.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+16-Jan-2025 11:05:22.477 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.2].
+16-Jan-2025 11:05:22.477 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+16-Jan-2025 11:05:22.477 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+16-Jan-2025 11:05:22.480 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+16-Jan-2025 11:05:22.637 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:05:22.647 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [268] milliseconds
+16-Jan-2025 11:05:22.665 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+16-Jan-2025 11:05:22.666 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.98]
+16-Jan-2025 11:05:22.674 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/Admin.war]
+16-Jan-2025 11:05:22.680 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Host]
+16-Jan-2025 11:05:22.683 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/include]
+16-Jan-2025 11:05:22.683 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+16-Jan-2025 11:05:22.683 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+16-Jan-2025 11:05:22.683 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter]
+16-Jan-2025 11:05:22.683 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter]
+16-Jan-2025 11:05:22.685 INFO [main] org.apache.catalina.startup.ExpandWar.expand An expanded directory [/usr/local/tomcat/webapps/Admin] was found with a last modified time that did not match the associated WAR. It will be deleted.
+16-Jan-2025 11:05:23.203 FINE [main] org.apache.jasper.servlet.TldScanner.scanResourcePaths No TLD files were found in resource path [/WEB-INF/].
+16-Jan-2025 11:05:23.227 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/Admin.war] has finished in [553] ms
+16-Jan-2025 11:05:23.229 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:05:23.235 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [588] milliseconds
+16-Jan-2025 11:10:01.643 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:10:01.661 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+16-Jan-2025 11:10:01.684 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:10:01.698 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:10:02.266 WARNING [main] org.apache.tomcat.util.digester.SetPropertiesRule.begin Match [Server/Service/Engine/Host] failed to set property [reloadable] to [true]
+16-Jan-2025 11:10:02.289 WARNING [main] org.apache.catalina.core.StandardContext.setPath A context path must either be an empty string or start with a '/' and do not end with a '/'. The path [/] does not meet these criteria and has been changed to []
+16-Jan-2025 11:10:02.290 WARNING [main] org.apache.tomcat.util.digester.SetPropertiesRule.begin Match [Server/Service/Engine/Host/Context] failed to set property [debug] to [0]
+16-Jan-2025 11:10:02.296 SEVERE [main] org.apache.tomcat.util.digester.Digester.fatalError Parse fatal error at line [183] column [9]
+	org.xml.sax.SAXParseException; systemId: file:/usr/local/tomcat/conf/server.xml; lineNumber: 183; columnNumber: 9; The element type "Context" must be terminated by the matching end-tag "</Context>".
+		at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+		at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:178)
+		at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+		at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+		at java.xml/com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1465)
+		at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement(XMLDocumentFragmentScannerImpl.java:1695)
+		at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2899)
+		at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+		at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+		at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+		at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+		at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+		at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1224)
+		at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+		at org.apache.tomcat.util.digester.Digester.parse(Digester.java:1542)
+		at org.apache.catalina.startup.Catalina.parseServerXml(Catalina.java:583)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:675)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:713)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:302)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+16-Jan-2025 11:10:02.297 WARNING [main] org.apache.catalina.startup.Catalina.parseServerXml Unable to load server configuration from [/usr/local/tomcat/conf/server.xml]
+	org.xml.sax.SAXParseException; systemId: file:/usr/local/tomcat/conf/server.xml; lineNumber: 183; columnNumber: 9; The element type "Context" must be terminated by the matching end-tag "</Context>".
+		at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1251)
+		at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+		at org.apache.tomcat.util.digester.Digester.parse(Digester.java:1542)
+		at org.apache.catalina.startup.Catalina.parseServerXml(Catalina.java:583)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:675)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:713)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:302)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+16-Jan-2025 11:10:02.298 SEVERE [main] org.apache.catalina.startup.Catalina.start Cannot start server, server instance is not configured
+16-Jan-2025 11:10:38.855 WARNING [main] org.apache.tomcat.util.digester.SetPropertiesRule.begin Match [Server/Service/Engine/Host] failed to set property [reloadable] to [true]
+16-Jan-2025 11:10:38.866 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.98
+16-Jan-2025 11:10:38.866 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Dec 5 2024 19:50:29 UTC
+16-Jan-2025 11:10:38.866 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.98.0
+16-Jan-2025 11:10:38.866 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+16-Jan-2025 11:10:38.866 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.10.11-linuxkit
+16-Jan-2025 11:10:38.866 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          aarch64
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.5+11-LTS
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+16-Jan-2025 11:10:38.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+16-Jan-2025 11:10:38.868 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+16-Jan-2025 11:10:38.868 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+16-Jan-2025 11:10:38.868 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+16-Jan-2025 11:10:38.868 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+16-Jan-2025 11:10:38.872 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.2].
+16-Jan-2025 11:10:38.872 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+16-Jan-2025 11:10:38.872 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+16-Jan-2025 11:10:38.876 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+16-Jan-2025 11:10:39.039 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:10:39.049 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [294] milliseconds
+16-Jan-2025 11:10:39.070 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+16-Jan-2025 11:10:39.070 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.98]
+16-Jan-2025 11:10:39.079 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/Admin.war]
+16-Jan-2025 11:10:39.087 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Host]
+16-Jan-2025 11:10:39.090 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/include]
+16-Jan-2025 11:10:39.090 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+16-Jan-2025 11:10:39.090 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+16-Jan-2025 11:10:39.090 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter]
+16-Jan-2025 11:10:39.090 WARNING [main] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter]
+16-Jan-2025 11:10:39.092 INFO [main] org.apache.catalina.startup.ExpandWar.expand An expanded directory [/usr/local/tomcat/webapps/Admin] was found with a last modified time that did not match the associated WAR. It will be deleted.
+16-Jan-2025 11:10:39.645 FINE [main] org.apache.jasper.servlet.TldScanner.scanResourcePaths No TLD files were found in resource path [/WEB-INF/].
+16-Jan-2025 11:10:39.668 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/Admin.war] has finished in [589] ms
+16-Jan-2025 11:10:39.670 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+16-Jan-2025 11:10:39.676 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [626] milliseconds
+16-Jan-2025 11:35:01.319 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Admin]
+16-Jan-2025 11:35:31.428 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/Admin-exec.war]
+16-Jan-2025 11:35:31.438 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Host]
+16-Jan-2025 11:35:31.438 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/include]
+16-Jan-2025 11:35:31.439 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+16-Jan-2025 11:35:31.439 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+16-Jan-2025 11:35:31.439 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter]
+16-Jan-2025 11:35:31.439 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter]
+16-Jan-2025 11:35:31.796 FINE [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanResourcePaths No TLD files were found in resource path [/WEB-INF/lib-provided/].
+16-Jan-2025 11:35:31.797 FINE [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanResourcePaths No TLD files were found in resource path [/WEB-INF/].
+16-Jan-2025 11:35:31.808 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/Admin-exec.war] has finished in [380] ms
