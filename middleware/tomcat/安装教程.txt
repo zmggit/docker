@@ -26,3 +26,4 @@ docker run -p 8081:8080 --name tomcat9 \
 
 //查看用户列表
 grep '<user' /usr/local/tomcat/conf/tomcat-users.xml | awk -F'username="|"' '{print $2}'
+//自动解压
