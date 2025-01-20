@@ -1,19 +1,18 @@
 //拉取镜像
-docker pull tomcat:9.0
+docker pull tomcat:10.1
 //启动容器
-docker run -p 8081:8080 --name tomcat9 -d tomcat:9.0
 
 docker cp/Users/zhumenggang/zhu_work/go/src/docker/middleware/tomcal
 /yourapp.war tomcat9:/usr/local/tomcat/webapps/
 
 
-docker run  --privileged -p 8081:8080 --name tomcat9 \
+docker run  --privileged -p 8081:8080 --name tomcat10 \
 -v /Users/zhumenggang/zhu_work/go/src/docker/middleware/tomcat/conf:/usr/local/tomcat/conf \
 -v /Users/zhumenggang/zhu_work/go/src/docker/middleware/tomcat/logs:/usr/local/tomcat/logs \
 -v /Users/zhumenggang/zhu_work/go/src/docker/middleware/tomcat/webapps:/usr/local/tomcat/webapps \
 -v /Users/zhumenggang/zhu_work/go/src/docker/middleware/tomcat/work:/usr/local/tomcat/work \
 -v /Users/zhumenggang/zhu_work/go/src/docker/middleware/tomcat/temp:/usr/local/tomcat/temp \
--d tomcat:9.0
+-d tomcat:10.1
 
 
 docker run -p 8081:8080 --name tomcat9 \
