@@ -13,3 +13,6 @@ Admin user
 Environment variable	Default value
 SYBASE_USER	sa
 SYBASE_PASSWORD	myPassword
+
+
+创建库

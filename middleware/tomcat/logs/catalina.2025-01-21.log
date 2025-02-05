@@ -1,0 +1,40 @@
+21-Jan-2025 08:42:25.836 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/book]
+21-Jan-2025 08:42:25.903 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/book.war]
+21-Jan-2025 08:42:25.910 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Host]
+21-Jan-2025 08:42:25.910 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/include]
+21-Jan-2025 08:42:25.910 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+21-Jan-2025 08:42:25.910 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+21-Jan-2025 08:42:25.910 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter]
+21-Jan-2025 08:42:25.911 WARNING [Catalina-utility-2] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter]
+21-Jan-2025 08:42:26.439 FINE [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanResourcePaths No TLD files were found in resource path [/WEB-INF/].
+21-Jan-2025 08:42:28.356 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/book.war] has finished in [2,453] ms
+21-Jan-2025 08:50:38.816 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/book]
+21-Jan-2025 08:50:38.892 WARNING [Catalina-utility-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [book] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Jan-2025 08:50:38.914 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/book.war]
+21-Jan-2025 08:50:38.918 WARNING [Catalina-utility-1] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Host]
+21-Jan-2025 08:50:38.919 WARNING [Catalina-utility-1] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/include]
+21-Jan-2025 08:50:38.919 WARNING [Catalina-utility-1] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+21-Jan-2025 08:50:38.919 WARNING [Catalina-utility-1] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter/exclude]
+21-Jan-2025 08:50:38.919 WARNING [Catalina-utility-1] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter/JarScanFilter]
+21-Jan-2025 08:50:38.919 WARNING [Catalina-utility-1] org.apache.tomcat.util.digester.Digester.endElement No rules found matching [Context/Resources/JarScanFilter]
+21-Jan-2025 08:50:39.428 FINE [Catalina-utility-1] org.apache.jasper.servlet.TldScanner.scanResourcePaths No TLD files were found in resource path [/WEB-INF/].
+21-Jan-2025 08:50:41.168 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/book.war] has finished in [2,254] ms
+21-Jan-2025 08:50:43.262 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1394)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:985)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
