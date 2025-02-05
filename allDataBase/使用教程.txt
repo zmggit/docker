@@ -2,7 +2,6 @@
 docker-compose -f docker-compose.yaml up -d
 
 使用dockerFile
-
 # 构建Docker镜像
 docker build -t my-php-app php/7.4
 
