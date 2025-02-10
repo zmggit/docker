@@ -1,0 +1,48 @@
+
+拉起镜像
+docker pull docker-0.unsee.tech/datagrip/sybase:16.0
+
+docker run -d -t -p 5000:5000 --name=sybase16 docker-0.unsee.tech/datagrip/sybase:16.0
+
+//安装isql
+sudo yum install epel-release
+sudo yum install mssql-tools unixODBC-devel：
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+source ~/.bashrc
+
+sudo yum install util-linux
+
+disk init name = 'mydevice',physname = '/opt/sybase/data/mydevice.dat',size = '100M',vdevno = 0
+
+
+name=CentOS-$releasever - Base - mirrors.aliyun.com
+mirrorlist=https://mirrors.aliyun.com/repo/Centos-$releasever/base/
+#baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+
+
+//角色
+db_owner 和 db_datareader
+
+创建库
+CREATE DATABASE test
+ON master_data = '/var/docker/sybase/store/my_database.dat' (size = 10MB)
+LOG ON master_log = '/var/docker/sybase/store/my_database_log.log' (size = 5MB);
+
+
+chmod -R 755 /var/docker/sybase/store
+chown -R sybase:sybase /var/docker/sybase/store
+
+-- 创建服务器级登录
+EXEC sp_addlogin 'aka', 'Apom@321', 'test'
+
+-- 将登录映射到数据库用户
+EXEC sp_adduser 'aka', 'Apom@321', 'test'
+
+-- 分配权限
+GRANT SELECT ON mytable TO myuser
+
+GRANT SELECT, INSERT, UPDATE ON table_name TO username
+

@@ -57,12 +57,18 @@ curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compo
 docker run --restart=always --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 e9277becade9
 docker exec -it mysql8-copy bin/bash
 
+docker run --restart=always --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 e9277becade9
+
+
+
 ##复制所有文件到宿主机
  docker cp 5b3c7edb3744:/var/lib/mysql/. /opt/datas/docker/mysql/data/
  docker cp df35b56c6707:/var/lib/mysql/. /Users/zhumenggang/zhu_work/go/src/docker/mysql8/data
 
 安装mysql8
 docker run --restart=always --name mysql8 --privileged=true -d -p 3232:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/conf/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/log:/var/log/ -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 6c4781d18d56
+
+docker run --restart=always --name mysql8test --privileged=true -d -p 3306:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/conf/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/log:/var/log/ -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/data:/var/lib/mysql -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/work:/var/local -e MYSQL_ROOT_PASSWORD=123456 6c4781d18d56
 //进去容器
 docker exec -it mysql8 bin/bash
 
@@ -80,6 +86,8 @@ CREATE USER 'zmg'@'%' IDENTIFIED WITH mysql_native_password BY 'Apom@321' requir
 CREATE USER 'zmg'@'%' IDENTIFIED BY 'Apom@321';
 alter user 'zmg'@'%' identified with mysql_native_password by 'Apom@321';
 ALTER USER 'zmg'@'%' IDENTIFIED BY 'Apom@321';
+
+CREATE USER 'zmg'@'%' IDENTIFIED BY '123456';
 
 
 CREATE USER 'zmg'@'localhost' IDENTIFIED BY 'Apom@321';

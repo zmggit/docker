@@ -1,0 +1,137 @@
+debain10
+
+
+wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb
+
+sudo apt install ./mysql-apt-config_0.8.13-1_all.deb
+sudo apt-key del A4A9 4068 76FC BD3C 4567  70C8 8C71 8D3B 5072 E1F5    
+sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 467B942D3A79BD29
+sudo apt update
+sudo apt install mysql-server
+
+
+
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C
+
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
+
+pacman-key adv --keyserver keyserver.ubuntu.com --recv-keys 6D42BDD116E0068F
+
+
+
+tee /etc/apt/sources.list <<-'EOF'
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+deb http://mirrors.aliyun.com/debian-security/ buster/updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian-security/ buster/updates main non-free contrib
+EOF
+
+
+
+tee /etc/docker/daemon.json <<-'EOF'
+{
+    "data-root": "/opt/docker",
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "800m",
+        "max-file": "50"
+    },
+    "registry-mirrors": [
+        "https://mirror.ccs.tencentyun.com"
+    ]
+}
+EOF
+
+
+curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+/Users/zhumenggang/zhu_work/docker/mysql
+
+
+
+##先随便创建一个复制对应的文件到是宿主机
+docker run --restart=always --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 e9277becade9
+docker exec -it mysql8-copy bin/bash
+
+docker run --restart=always --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 e9277becade9
+
+
+
+##复制所有文件到宿主机
+ docker cp 5b3c7edb3744:/var/lib/mysql/. /opt/datas/docker/mysql/data/
+ docker cp df35b56c6707:/var/lib/mysql/. /Users/zhumenggang/zhu_work/go/src/docker/mysql8/data
+
+安装mysql8
+docker run --restart=always --name mysql8 --privileged=true -d -p 3232:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/conf/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/log:/var/log/ -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 6c4781d18d56
+
+docker run --restart=always --name mysql8test --privileged=true -d -p 3306:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/conf/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/log:/var/log/ -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/data:/var/lib/mysql -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/work:/var/local -e MYSQL_ROOT_PASSWORD=123456 6c4781d18d56
+//进去容器
+docker exec -it mysql8 bin/bash
+
+ use mysql;
+ select host,user,plugin from user;
+ update user set host='%' where user='root';
+复制容器内外文件
+ docker cp 5e019ec16480:/etc/apt/sources.list /opt/datas/docker/mysql/ 容器到宿主机
+ docker cp /opt/datas/docker/mysql/sources.list 5e019ec16480:/etc/apt/
+
+
+创建必须使用ssl登录的账号
+show variables like '%ssl%';
+CREATE USER 'zmg'@'%' IDENTIFIED WITH mysql_native_password BY 'Apom@321' require ssl PASSWORD EXPIRE NEVER;
+CREATE USER 'zmg'@'%' IDENTIFIED BY 'Apom@321';
+alter user 'zmg'@'%' identified with mysql_native_password by 'Apom@321';
+ALTER USER 'zmg'@'%' IDENTIFIED BY 'Apom@321';
+
+
+CREATE USER 'zmg'@'localhost' IDENTIFIED BY 'Apom@321';
+GRANT ALL ON *.* TO 'zmg'@'%';
+ALTER USER 'zmg'@'%' REQUIRE SSL; 
+flush privileges;
+取消
+update user set ssl_type='' where user='zmg';
+
+
+flush privileges;
+SELECT ssl_type From mysql.user Where user="zmg";
+mysql --ssl-ca=/var/lib/mysql/server-cert.pem --ssl-cert=/var/lib/mysql/server-cert.pem --ssl-key=/var/lib/mysql/server-key.pem --ssl-cipher=AES128-SHA -u zmg -p
+mysql --ssl-ca=/var/lib/mysql/ca.pem --ssl-cert=/var/lib/mysql/client-cert.pem --ssl-key=/var/lib/mysql/client-key.pem --ssl-cipher=AES128-SHA -u zmg -pApom@321
+
+#自定义手动
+ mysql --ssl-ca=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/sanssl/ca.crt --ssl-cert=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/sanssl/client.pem --ssl-key=/Users/zhumenggang/zhu_work/go/src/docker/mysql8/data/sanssl/client.key -u zmg -pApom@321 -h172.16.2.126 -P3232 --ssl-mode VERIFY_CA --ssl-cipher=AES128-SHA
+
+
+ssl-ca=/var/lib/mysql/server-cert.pem
+ssl-cert=/var/lib/mysql/server-cert.pem
+ssl-key=/var/lib/mysql/server-key.pem
+
+
+#指定CA证书公钥文件的路径
+ssl-ca=/path/to/ca.pem
+#指定mysql服务器证书的路径
+ssl-cert=/path/to/server_cert.pem
+#指定mysql服务器证书的私钥路径
+ssl-key=/path/to/server_key.pem
+
+
+mysql -u root -p123456 -h172.16.2.126 -P3232
+mysql -u zmg  -h172.16.2.126 -P3232
+
+
+
+mysql -u root -p123456 -h172.16.2.126 -P3308
+
+mysql -u zmg -pApom@321 -h172.16.2.126 -P3308
+mysql --ssl-ca=/Users/zhumenggang/zhu_work/go/src/docker/mariadb/data/ca.pem --ssl-cert=/Users/zhumenggang/zhu_work/go/src/docker/mariadb/data/client-cert.pem --ssl-key=/Users/zhumenggang/zhu_work/go/src/docker/mariadb/data/client-key.pem  -u zmg  -h172.16.2.126 -P3308 -pApom@321
+
+
+mysql -u zmg -pApom@321  -P3308
+
+
+
+
+

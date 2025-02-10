@@ -3,16 +3,7 @@
 
 docker run -itd  -p 24:22 -v /Users/zhumenggang/zhu_work/go/src/docker/sys/ubuntuffm/data:/var/www  --privileged=true --name ubuntuffm ffb64c9b7e8b    /bin/bash
 
-
-docker run -itd -p 9326:9326 -p 24:22  -v /opt/won-cloud/:/opt/won-cloud/ --privileged=true --name debian10 69530eaa9e7e /bin/bash
-
-
-docker run -itd -p 24:22 --name ubuntu24.04 981912c48e9a /bin/bash
-
-docker run -itd -p 24:22 -p 5901:5901 --name ubuntu24.04vnc fec8bfd95b54 /bin/bash
-
-/opt/won-cloud/
-
+docker run -itd  -p 25:22 -p 3306:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/work:/var/www  --privileged=true --name ubuntumysql ffb64c9b7e8b    /bin/bash
 
 docker exec -it ubuntu /bin/bash
 

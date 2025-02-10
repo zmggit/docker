@@ -1,0 +1,13 @@
+MySQL Connector/ODBC Build Information
+
+build-date           :  2024-12-18
+os-info              :  Darwin-24.1.0
+build-type           :  Debug
+compiler             :  AppleClang 16.0.0.16000026
+mysql-version        :  9.2.0
+libmysql-linkage     :  Static
+odbc-manager         :  UnixODBC 2.3.9
+macos-version        :  15.1.1
+macos-build          :  24B91
+macos-target         :  14.0
+

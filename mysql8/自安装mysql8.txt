@@ -1,0 +1,76 @@
+MySQL：
+Driver = /usr/local/lib/libmyodbc8w.so
+PostgreSQL：
+Driver = /usr/local/lib/psqlodbcw.so
+SQLite：
+Driver = /usr/local/lib/sqliteodbc.dylib
+Microsoft SQL Server：
+Driver = /usr/local/lib/libmsodbcsql.18.dyli
+
+//查看密码策略·
+SHOW VARIABLES LIKE 'validate_password%';
+//配置文件路径 /etc/mysql/mysql.conf.d/mysqld.cnf
+[mysqld]
+validate_password.policy=LOW
+validate_password.length=6
+
+//开启远程连接
+FLUSH PRIVILEGES;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+bind-address = 0.0.0.0
+
+//常用命令
+service mysql status
+service mysql restart
+//官网安装odbc 教程
+https://dev.mysql.com/doc/connector-odbc/en/connector-odbc-installation-binary-unix-tarball.html
+
+cp bin/* /usr/local/bin
+cp lib/* /usr/local/lib
+myodbc-installer -a -d -n "MySQL ODBC 9.2 ANSI Driver" -t "Driver=/usr/local/lib/libmyodbc9a.so"
+
+
+//创建新用户
+use mysql
+select 'host','user' from user where user = 'root';
+
+CREATE USER 'zmg'@'%' IDENTIFIED BY '123456';
+flush privileges;
+
+//ANSI  libmyodbc9a.so
+//Unicode libmyodbc9w.so
+
+/opt/homebrew/opt/unixodbc/lib
+
+
+检查驱动配置是否正确。 vim /etc/odbcinst.ini
+[MySQL ODBC 9.2 ANSI Driver]
+DRIVER=/usr/local/lib/libmyodbc9a.so
+UsageCount=1
+
+检查数据源配置是否正确。vim /etc/odbc.ini
+[myodbc]
+Description = MySQL ODBC Driver DSN
+Driver = MySQL ODBC 9.2 ANSI Driver
+Server = 172.16.2.126
+Database = test
+User = zmg
+Password = 123456
+Port = 3306
+
+//测试配置是否正确
+isql -v myodbc root 123456
+isql -v myodbc zmg 123456
+
+
+isql -v MySQL ODBC 8.0 ANSI Driver zmg 123456
+
+//驱动
+/opt/homebrew/etc/odbcinst.ini
+
+odbcinst -j
+
+
+
