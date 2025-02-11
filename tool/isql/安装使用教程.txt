@@ -1,0 +1,9 @@
+
+//安装支持
+apt install unixodbc -y
+//查看配置位置
+odbcinst -j
+//测试连接 -S server_name
+isql -v myodbc zmg 123456
+
+isql

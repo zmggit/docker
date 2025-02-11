@@ -5,22 +5,13 @@ docker pull docker-0.unsee.tech/datagrip/sybase:16.0
 docker run -d -t -p 5000:5000 --name=sybase16 docker-0.unsee.tech/datagrip/sybase:16.0
 
 //安装isql
-sudo yum install epel-release
-sudo yum install mssql-tools unixODBC-devel：
-echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
-source ~/.bashrc
 
-sudo yum install util-linux
-
-disk init name = 'mydevice',physname = '/opt/sybase/data/mydevice.dat',size = '100M',vdevno = 0
+cat /opt/sybase/interfaces
 
 
-name=CentOS-$releasever - Base - mirrors.aliyun.com
-mirrorlist=https://mirrors.aliyun.com/repo/Centos-$releasever/base/
-#baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/
-gpgcheck=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+isql -v sybase sa mypassword
 
+isql -S 127.0.0.1 -U sa -P mypassword -D test
 
 
 //角色
