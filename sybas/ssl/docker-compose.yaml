@@ -1,0 +1,12 @@
+services:
+  sybase:
+    image: datagrip/sybase:latest
+    container_name: sybase
+    ports:
+      - 5500:5000
+    environment:
+      - ENABLE_SSL=${ENABLE_SSL:-false}
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./MYSYBASE.crt:/MYSYBASE.crt
+      - ./MYSYBASE.key:/MYSYBASE.key

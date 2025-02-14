@@ -1,6 +1,7 @@
 拉起镜像
 docker pull docker-0.unsee.tech/datagrip/sybase:16.0
 docker run -d -t -p 5000:5000 --name=sybase16 -v /var/www/docker/sybase16/mudata:/var/www docker-0.unsee.tech/datagrip/sybase:16.0
+docker exec -it sybase16 bash
 //安装isql
 cat /opt/sybase/interfaces
 
@@ -22,6 +23,7 @@ Port= 5000
 Database= testdb
 User ID= sa
 Password= myPassword
+
 
 
 
@@ -59,5 +61,4 @@ db_owner 和 db_datareader
 
 
 
-cp /var/www/MYSYBASE.crt /opt/sybase/MYSYBASE.crt
-cp /var/www/MYSYBASE.key /opt/sybase/MYSYBASE.key
+cp /var/www/MYSYBASE.crt /opt/sybase/MYSYBASE.crtexit

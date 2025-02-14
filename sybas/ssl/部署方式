@@ -3,6 +3,10 @@ source /opt/sybase/SYBASE.sh
 第二步生成的证书和私钥 要放在/opt/sybase 下
 openssl req -new -x509 -newkey rsa:2048 -keyout MYSYBASE.key -nodes -days 3650 -out MYSYBASE.crt -subj "/CN=MYSYBASE"
 
+cp /var/www/MYSYBASE.crt /opt/sybase/MYSYBASE.crt
+cp /var/www/MYSYBASE.key /opt/sybase/MYSYBASE.key
+
+
 第三步
 export SYBASE=/opt/sybase
 cat $SYBASE/MYSYBASE.crt $SYBASE/MYSYBASE.key > $SYBASE/$SYBASE_ASE/certificates/MYSYBASE.crt
@@ -15,3 +19,11 @@ sed -i 's/5000/5000 ssl/g' $SYBASE/interfaces
 isql -U sa -P myPassword -S MYSYBASE
 或者用rpc
 "TLSConfig":{"CaCert:""}
+
+isql -U sa -P myPassword -S MYSYBASE
+isql -v -S MYSYBASE -U sa -P myPassword -d testdb -S "Encryption=ssl;TrustedFile=/opt/sybase/config/trusted.txt"
+
+root
+Pass}word
+
+ENABLE_SSL=true docker compose -f docker-compose.yaml up -d
