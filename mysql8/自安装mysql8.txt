@@ -68,9 +68,9 @@ isql myodbc zmg 123456
 
 isql -v MySQL ODBC 8.0 ANSI Driver zmg 123456
 
-isql -v CData Sybase Sys sa myPassword
-
 //驱动
+
+odbcinst -j
 
 
 

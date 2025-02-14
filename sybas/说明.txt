@@ -1,39 +1,63 @@
-
 拉起镜像
 docker pull docker-0.unsee.tech/datagrip/sybase:16.0
-
-docker run -d -t -p 5000:5000 --name=sybase16 docker-0.unsee.tech/datagrip/sybase:16.0
-
+docker run -d -t -p 5000:5000 --name=sybase16 -v /var/www/docker/sybase16/mudata:/var/www docker-0.unsee.tech/datagrip/sybase:16.0
 //安装isql
-
 cat /opt/sybase/interfaces
 
+[sybase]
+Description = SYBASE ODBC Driver DSN
+Driver = Devart ODBC Driver for ASE
+Server = 172.16.43.1
+Database = testdb
+User = sa
+Password = myPassword
+Port = 5000
 
-isql -v sybase sa mypassword
 
-isql -S 127.0.0.1 -U sa -P mypassword -D test
+[sybase]
+Driver=Devart ODBC Driver for ASE
+Data Source= 172.16.43.1
+Server = 172.16.43.1
+Port= 5000
+Database= testdb
+User ID= sa
+Password= myPassword
 
+
+
+
+//查看已安装
+dpkg -l | grep -i "sybase\|odbc"
+//安装
+dpkg -i SybaseODBCDriverforUnix.deb
+//卸载
+ rm -rf /etc/odbc.ini
+rm -rf /etc/odbcinst.ini
+rm -rf /opt/sybase/ODBC
+rm -rf /usr/lib/odbc/sybase
+rm -rf /opt/cdata
+dpkg -r cdata-odbc-driver-for-sybase
+
+//校验
+odbcinst -j
+odbcinst -q -d
+odbcinst -q -s
+
+isql sybase sa mypassword
+grant sso_role to satester;
+
+isql -U sa -P myPassword -S MYSYBASE
+isql -U sa -P myPassword -S DEVART_ASE
+
+isql -v -S "DRIVER={MySQL ODBC 8.0 Driver};SERVER=192.168.1.100;PORT=3306;DATABASE=mydb" username password
+
+isql sybase
 
 //角色
 db_owner 和 db_datareader
 
-创建库
-CREATE DATABASE test
-ON master_data = '/var/docker/sybase/store/my_database.dat' (size = 10MB)
-LOG ON master_log = '/var/docker/sybase/store/my_database_log.log' (size = 5MB);
 
 
-chmod -R 755 /var/docker/sybase/store
-chown -R sybase:sybase /var/docker/sybase/store
 
--- 创建服务器级登录
-EXEC sp_addlogin 'aka', 'Apom@321', 'test'
-
--- 将登录映射到数据库用户
-EXEC sp_adduser 'aka', 'Apom@321', 'test'
-
--- 分配权限
-GRANT SELECT ON mytable TO myuser
-
-GRANT SELECT, INSERT, UPDATE ON table_name TO username
-
+cp /var/www/MYSYBASE.crt /opt/sybase/MYSYBASE.crt
+cp /var/www/MYSYBASE.key /opt/sybase/MYSYBASE.key

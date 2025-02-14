@@ -1,0 +1,2 @@
+//为了能使用https软件源，需要安装一个软件：
+apt install ca-certificates

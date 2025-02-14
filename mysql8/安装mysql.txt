@@ -47,17 +47,6 @@ tee /etc/docker/daemon.json <<-'EOF'
 EOF
 
 
-curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-/Users/zhumenggang/zhu_work/docker/mysql
-
-
-
-##先随便创建一个复制对应的文件到是宿主机
-docker run --restart=always --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 e9277becade9
-docker exec -it mysql8-copy bin/bash
-
-docker run --restart=always --name mysql8-copy --privileged=true -d -p 3334:3306  -e MYSQL_ROOT_PASSWORD=123456 e9277becade9
 
 
 
@@ -66,7 +55,7 @@ docker run --restart=always --name mysql8-copy --privileged=true -d -p 3334:3306
  docker cp df35b56c6707:/var/lib/mysql/. /Users/zhumenggang/zhu_work/go/src/docker/mysql8/data
 
 安装mysql8
-docker run --restart=always --name mysql8 --privileged=true -d -p 3232:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/conf/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/log:/var/log/ -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 6c4781d18d56
+docker run --restart=always --name mysql8 --privileged=true -d -p 3232:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/conf/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/log:/var/log/ -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 74886cb94029
 
 docker run --restart=always --name mysql8test --privileged=true -d -p 3306:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/conf/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/log:/var/log/ -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/data:/var/lib/mysql -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/work:/var/local -e MYSQL_ROOT_PASSWORD=123456 6c4781d18d56
 //进去容器
@@ -88,7 +77,7 @@ alter user 'zmg'@'%' identified with mysql_native_password by 'Apom@321';
 ALTER USER 'zmg'@'%' IDENTIFIED BY 'Apom@321';
 
 
-CREATE USER 'zmg'@'localhost' IDENTIFIED BY 'Apom@321';
+CREATE USER 'zmg'@'%' IDENTIFIED BY 'Apom@321';
 GRANT ALL ON *.* TO 'zmg'@'%';
 ALTER USER 'zmg'@'%' REQUIRE SSL; 
 flush privileges;

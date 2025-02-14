@@ -10,13 +10,14 @@ apt-get install telnet -y && apt-get install telnetd -y && apt-get install net-t
 apt-get install rsyslog -y
 #检查版本rsyslogd -v#查询配置的登录认证日志存储位置
 启动 /usr/sbin/rsyslogd
-  查看登录失败cat /etc/rsyslog.d/50-default.conf#查询登录认证的日志cat /var/log/auth.log
+查看登录失败cat /etc/rsyslog.d/50-default.conf#查询登录认证的日志cat /var/log/auth.log
+查看为啥登录不上日志 tail -f /var/log/syslog
+
 
  vim /etc/inetd.conf
 telnet stream tcp nowait telnetd /usr/sbin/tcpd/ /usr/sbin/in.telnetd
 telnet stream tcp nowait root   /usr/sbin/tcpd/ /usr/sbin/in.telnetd
-
-Apom@321
+//
 vim /etc/xinetd.conf
 
 {
@@ -49,6 +50,7 @@ service xinetd restart
 netstat -a |grep telnet
 //检验xinetd是监听
 netstat -tulnp | grep xinetd
+netstat -tulpn | grep 23
 
 //验证是否成功
 telnet 172.16.2.126 223 //默认使用的是当前系统使用的用户当做登录用户

@@ -1,7 +1,10 @@
 
-//docker run -itd -p 24:22 --privileged --name archlinux archlinux:multilib-devel-20240101.0.204074  /usr/bin/init
+//docker run -itd -p 24:22  --privileged --name archlinux archlinux:multilib-devel-20240101.0.204074  /usr/bin/init
 
-docker run -itd  -p 24:22 -v /Users/zhumenggang/zhu_work/go/src/docker/sys/ubuntuffm/data:/var/www  --privileged=true --name ubuntuffm ffb64c9b7e8b    /bin/bash
+
+docker run -itd  -p 23:22 -p 223:23 -p 221:21  -v /Users/zhumenggang/zhu_work/go/src/docker/sys/ubuntu/data:/var/www  --privileged=true --name ubuntu24.04 c3d1a3432580    /bin/bash
+
+docker run -itd  -p 24:22 -v /Users/zhumenggang/zhu_work/go/src/docker/sys/ubuntuffm/data:/var/www  --privileged=true --name ubuntuffm c3d1a3432580    /bin/bash
 
 docker run -itd  -p 25:22 -p 3306:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mysql8Te/work:/var/www  --privileged=true --name ubuntumysql ffb64c9b7e8b    /bin/bash
 
@@ -25,11 +28,3 @@ service ssh start
 ssh-keygen -R  [172.16.2.126]:24
 
 ssh-keygen -R 172.16.2.126
-
-
-
-docker build -t my-sshd .
-
-docker run -d -p 2222:22 --name my-sshd my-sshd
-
-docker run -itd -p 221:21 -p 223:23 -p 222:22  --privileged --name  my-sshd  my-sshd

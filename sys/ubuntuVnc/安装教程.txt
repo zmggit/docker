@@ -18,9 +18,8 @@ vncserver \
 -1（硬限制）：表示没有硬限制，进程可以锁定的内存量同样没有上限。
 
 docker pull ubuntu:20.04
-docker run -itd --privileged --name=ubuntu20.04vnc --ulimit memlock=-1:-1 -p 22666:22 -p 5901:5901  /bin/bash
 
-docker run -itd --privileged --name=ubuntu20.04vnc  -p 22666:22 -p 5901:5901  223c04ea1fd5 /bin/bash
+docker run -itd --privileged -v /Users/zhumenggang/zhu_work/go/src/docker/sys/ubuntuVnc/data:/var/www --name=ubuntu20.04vnc  -p 22666:22 -p 5901:5901  c3d1a3432580 /bin/bash
 2、进入容器
 docker exec -it ubuntu20.04vnc /bin/bash
 
@@ -31,7 +30,7 @@ docker exec -it ubuntu20.04vnc /bin/bash
 apt update && apt install -y sudo
 
 2、创建用户
-adduser aka
+useradd aka
 
 3、赋予用户sudo权限
 usermod -aG sudo aka
@@ -43,25 +42,17 @@ su aka
 sudo passwd root
 
 6、安装vim并更换apt源为阿里源
-sudo apt install vim && sudo vim /etc/apt/sources.list
+ apt install vim && sudo vim /etc/apt/sources.list
 ```
-deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ noble main restricted universe multiverse
+
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ noble-updates main restricted universe multiverse
+
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ noble-backports main restricted universe multiverse
 ```
 
 7、更新apt源
 sudo apt update
-
-
-
 三、安装xfce桌面环境，并安装tigervnc, 使用普通用户
 1、安装xfce以及tigervnc，选择gdm3启动器
 sudo apt install xfce4 tigervnc-standalone-server

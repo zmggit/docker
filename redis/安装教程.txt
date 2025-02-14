@@ -1,9 +1,7 @@
 
-安装redis
-docker run -d --privileged --name=redis7  -p 6379:6379 -v /Users/zhumenggang/zhu_work/go/src/docker/redis/conf/redis.conf:/etc/redis/redis.conf -v /Users/zhumenggang/zhu_work/go/src/docker/redis/data:/data -v /Users/zhumenggang/zhu_work/go/src/docker/redis/logs:/logs e48e4ac2fa6b1dc2bb9abc9278df84653d3b38d5db82a2d414d3814f296e388e  redis-server /etc/redis/redis.conf  /bash
-docker run -d --privileged -u root --name=redis7  -p 6379:6379 -v /Users/zhumenggang/zhu_work/go/src/docker/redis/conf:/etc/redis  -v /Users/zhumenggang/zhu_work/go/src/docker/redis/data:/data -v /Users/zhumenggang/zhu_work/go/src/docker/redis/logs:/logs e48e4ac2fa6b1dc2bb9abc9278df84653d3b38d5db82a2d414d3814f296e388e  redis-server /etc/redis/redis.conf
-
-docker run -d --privileged -u root --name=redis7  -p 6379:6379 -p 6378:6378 -v /Users/zhumenggang/zhu_work/go/src/docker/redis/conf:/etc/redis  -v /Users/zhumenggang/zhu_work/go/src/docker/redis/data:/data -v /Users/zhumenggang/zhu_work/go/src/docker/redis/logs:/logs e48e4ac2fa6b1dc2bb9abc9278df84653d3b38d5db82a2d414d3814f296e388e  redis-server /etc/redis/redis.conf
+安装redis7.4.2
+docker pull redis:7.4.2
+docker run -d --privileged -u root --name=redis7.4.2  -p 6379:6379 -p 6378:6378 -v /Users/zhumenggang/zhu_work/go/src/docker/redis/conf:/etc/redis  -v /Users/zhumenggang/zhu_work/go/src/docker/redis/data:/data -v /Users/zhumenggang/zhu_work/go/src/docker/redis/logs:/logs 51801640dc9d  redis-server /etc/redis/redis.conf
 
 
 ls -ld /tmp

@@ -1,0 +1,43 @@
+//查看所有库
+sp_helpdb
+创建库
+SELECT name, login_time FROM master..syslogins WHERE name = CURRENT_USER;
+
+
+CREATE DATABASE my_database
+ON (FILENAME = '/var/docker/sybase/data/my_database.dat', SIZE = 25MB)
+LOG ON (FILENAME = '/var/docker/sybase/data/my_database_log.log', SIZE = 5MB);
+
+CREATE DATABASE my_database
+ON (FILENAME = '/var/docker/sybase/data/my_database.dat', SIZE = 25MB)
+LOG ON (FILENAME = '/var/docker/sybase/data/my_database_log.log', SIZE = 5MB);
+
+//sysusers系统表
+SELECT * FROM master..sysusers
+
+SELECT name FROM testdb..sysusers
+//登录用户
+SELECT name, status FROM syslogins
+创建登录用户：
+使用 sp_addlogin 存储过程创建登录用户。语法如下：
+sp_addlogin loginame, passwd [, defdb] [, deflanguage] [, fullname] [, passwdexp] [, minpwdlen] [, maxfailedlogins] [, auth_mech]
+loginame：要创建的登录用户名。
+passwd：登录用户的密码。
+defdb：（可选）用户的默认数据库。
+deflanguage：（可选）用户的默认语言。
+fullname：（可选）用户的全名。
+passwdexp：（可选）密码过期时间。
+minpwdlen：（可选）密码的最小长度。
+maxfailedlogins：（可选）最大失败登录次数。
+auth_mech：（可选）认证机制。
+//创建登录用户
+sp_addlogin aka, Apom@321, testdb, us_english
+//创建系统用户
+CREATE USER aka FOR LOGIN aka;
+//授予权限
+
+//当前登录库
+SELECT name FROM master..sysdatabases WHERE name = DB_NAME();
+//授权sso_role 权限
+sp_role 'grant', 'sso_role', 'aka'
+

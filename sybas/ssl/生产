@@ -1,0 +1,29 @@
+openssl genrsa -out SAP_ASE_SERVER-key.pem 2048
+
+openssl req -x509 -sha256 -new -nodes -key SAP_ASE_SERVER-key.pem -days 3650 -out SAP_ASE_SERVER-cert.pem
+
+openssl pkcs12 -export -in SAP_ASE_SERVER-cert.pem -inkey SAP_ASE_SERVER-key.pem -out SAP_ASE_SERVER.pfx
+
+
+openssl pkcs12 -in SAP_ASE_SERVER.pfx -out SAP_ASE_SERVER.pem -nodes
+
+
+cp SAP_ASE_SERVER.pem /opt/sybase/ASE-16_0/certificates/SAP_ASE_SERVER.cer
+cp SAP_ASE_SERVER.pem /opt/sybase/ASE-16_0/certificates/SAP_ASE_SERVER.txt
+
+登录
+source /opt/sybase/SYBASE.sh
+isql -U sa -P myPassword -S MYSYBASE
+
+sp_configure "enable ssl", 1
+go
+sp_ssladmin addcert, "/opt/sybase/ASE-16_0/certificates/SAP_ASE_SERVER.cer", "123456"
+go
+
+//将根证书的内容复制到trusted.txt文件中：
+cat /opt/sybase/ASE-16_0/certificates/SAP_ASE_SERVER.cer >>/opt/sybase/config/trusted.txt
+
+vi /opt/sybase/interfaces
+SAP_ASE_SERVER
+     master tcp ether 0.0.0.0 port ssl="CN=SAP_ASE_SERVER"
+     query tcp ether 127.0.0.1 port ssl="CN=SAP_ASE_SERVER"

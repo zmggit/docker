@@ -1,0 +1,17 @@
+第一步
+source /opt/sybase/SYBASE.sh
+第二步生成的证书和私钥 要放在/opt/sybase 下
+openssl req -new -x509 -newkey rsa:2048 -keyout MYSYBASE.key -nodes -days 3650 -out MYSYBASE.crt -subj "/CN=MYSYBASE"
+
+第三步
+export SYBASE=/opt/sybase
+cat $SYBASE/MYSYBASE.crt $SYBASE/MYSYBASE.key > $SYBASE/$SYBASE_ASE/certificates/MYSYBASE.crt
+cat $SYBASE/MYSYBASE.crt > $SYBASE/$SYBASE_ASE/certificates/MYSYBASE.txt
+cat $SYBASE/MYSYBASE.crt >> $SYBASE/config/trusted.txt
+sed -i 's/enable ssl = DEFAULT/enable ssl = 1/' $SYBASE/$SYBASE_ASE/MYSYBASE.cfg
+sed -i 's/5000/5000 ssl/g' $SYBASE/interfaces
+
+//第四步测试连接
+isql -U sa -P myPassword -S MYSYBASE
+或者用rpc
+"TLSConfig":{"CaCert:""}
