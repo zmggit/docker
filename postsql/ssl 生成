@@ -27,7 +27,7 @@ hostssl all all 0.0.0.0/0 cert
 生成客户端私钥
 openssl genrsa -des3 -out postgresql.key 2048
 
-客户端私钥生成后，可不移除密码，为简便操作，此处进行移除
+客户端私钥生成后，可移除密码，为简便操作，此处进行移除
  openssl rsa -in postgresql.key -out postgresql.key
 生成客户端csr文件
  openssl req -new -key postgresql.key -out postgresql.csr

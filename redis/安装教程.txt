@@ -3,6 +3,9 @@
 docker pull redis:7.4.2
 docker run -d --privileged -u root --name=redis7.4.2  -p 6379:6379 -p 6378:6378 -v /Users/zhumenggang/zhu_work/go/src/docker/redis/conf:/etc/redis  -v /Users/zhumenggang/zhu_work/go/src/docker/redis/data:/data -v /Users/zhumenggang/zhu_work/go/src/docker/redis/logs:/logs 51801640dc9d  redis-server /etc/redis/redis.conf
 
+6378 普通连接
+6379 tls 连接
+
 
 ls -ld /tmp
 chmod 644 /etc/redis/redis.conf

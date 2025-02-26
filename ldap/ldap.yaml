@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  openldap:
+    image: osixia/openldap
+    container_name: openldap-server
+    hostname: ldap-server
+    networks:
+      - ldap
+    ports:
+      - '9389:389'
+      - '9636:636'
+    volumes:
+      - /Users/zhumenggang/zhu_work/go/src/docker/ldap/database:/var/lib/ldap
+      - /Users/zhumenggang/zhu_work/go/src/docker/ldap/config:/etc/ldap/slapd.d
+      - /Users/zhumenggang/zhu_work/go/src/docker/ldap/data:/etc/ldap/data
+    environment:
+      - LDAP_ORGANISATION=zmg  #组织名称，需要改
+      - LDAP_DOMAIN=ldap.com    #域名，需要改
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=123456
+      #- LDAP_USERS=user01,user02
+      #- LDAP_PASSWORDS=password1,password2
+
+  #页面管理
+  phpldapadmin:
+    image: osixia/phpldapadmin
+    container_name: openldap-admin
+    hostname: ldap-admin
+    privileged: true #授予真实root权限
+    networks:
+      - ldap
+    ports:
+      - '9980:80'
+      - '9443:443'  #PHPLDAPADMIN_HTTPS为true有效
+    environment:
+      - PHPLDAPADMIN_HTTPS=false
+      - PHPLDAPADMIN_LDAP_HOSTS=ldap-server   #指向openldap的hostname
+    depends_on:
+      - openldap
+
+networks:
+  ldap:
+    driver: bridge
