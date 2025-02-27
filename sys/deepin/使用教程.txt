@@ -1,0 +1,18 @@
+docker-compose -f docker-compose.yaml up -d
+
+//统信uos arm
+docker pull linuxdeepin/deepin:beige-arm64-v1.4.0
+//统信uos amd
+docker pull linuxdeepin/deepin:23
+docker run -itd  -p 30522:22   -v /Users/zhumenggang/zhu_work/go/src/docker/sys/deepin/data:/var/www  --privileged=true --name deepin d0493d027bc8    /bin/bash
+docker run -itd  -p 30522:22   -v /root/docker/deepin/data:/var/www  --privileged=true --name deepin 539eaf83b8d1    /bin/bash
+//进去容器
+docker exec -it deepin bash
+apt update -y && apt install python3 -y
+修改配置
+vim /etc/ssh/sshd_config
+Port 22
+PermitRootLogin yes
+
+ssh-keygen -A
+/usr/sbin/sshd -D

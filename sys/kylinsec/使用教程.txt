@@ -1,0 +1,22 @@
+
+
+//麒麟信安
+docker pull wiiknow/kylinsec:basic
+
+//启动
+docker run -itd  -p 30222:22   -v /Users/zhumenggang/zhu_work/go/src/docker/sys/kylinsec/data:/var/www  --privileged=true --name kylinsec 358d69555468    /bin/bash
+docker run -itd  -p 30222:22   -v /root/docker/kylinsec/data:/var/www  --privileged=true --name kylinsec 7dfbfedc4346    /bin/bash
+
+docker exec -it kylinsec bash
+
+修改配置
+vim /etc/ssh/sshd_config
+Port 22
+PermitRootLogin yes
+注释
+#RSAAuthentication yes
+#RhostsRSAAuthentication no
+
+//创建用户
+mkdir -p /var/run/passwd && mkdir -p /var/run/utmp
+/usr/sbin/sshd -D

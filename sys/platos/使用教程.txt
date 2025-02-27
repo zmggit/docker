@@ -1,0 +1,17 @@
+docker-compose -f docker-compose.yaml up -d
+
+//深信服的platos
+docker pull joserodenas/platos:1.0.0
+//启动
+docker run -itd  -p 30622:22   -v /Users/zhumenggang/zhu_work/go/src/docker/sys/platos/data:/var/www  --privileged=true --name platos 8626a8c4497a    /bin/bash
+docker run -itd  -p 30622:22   -v /root/docker/platos/data:/var/www  --privileged=true --name platos 539eaf83b8d1    /bin/bash
+//进去容器
+docker exec -it platos bash
+apt update -y && apt install python3 -y
+修改配置
+vim /etc/ssh/sshd_config
+Port 22
+PermitRootLogin yes
+
+ssh-keygen -A
+/usr/sbin/sshd -D

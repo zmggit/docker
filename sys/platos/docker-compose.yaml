@@ -1,0 +1,18 @@
+services:
+  kylin:
+    container_name: kylinos
+    image:  hxsoong/kylin:v10-sp3
+    platform: linux/amd64
+#    privileged: true
+#    ports:
+#      - 822:22
+#      - 823:23
+#    volumes:
+#      - ./kylin/data:/opt/data
+    networks:
+      - app-sys
+    restart: always
+networks:
+  app-sys:
+    name: app-sys
+    driver: bridge

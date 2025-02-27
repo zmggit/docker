@@ -1,13 +1,11 @@
 docker-compose -f docker-compose.yaml up -d
 
-
+//银河麒麟
 docker pull --platform=linux/amd64 hxsoong/kylin:v10-sp3
-
-
 docker run -itd  -p 6022:22   -v /Users/zhumenggang/zhu_work/go/src/docker/sys/kylin/data:/var/www  --privileged=true --name kylinv10 bbf3226487a1    /bin/bash
 docker run -itd  -p 6022:22   -v /root/docker/kylinos/data:/var/www  --privileged=true --name kylinvos10 bbf3226487a1    /bin/bash
 
-yum update && yum install -y openssh-server && yum install vim -y && yum install -y passwd
+yum update -y && yum install -y openssh-server && yum install vim -y && yum install -y passwd
 
 
 修改配置

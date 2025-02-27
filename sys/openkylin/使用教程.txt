@@ -1,0 +1,22 @@
+
+//开放麒麟
+docker pull xxtxtop/openkylin:latest
+//启动
+docker run -itd  -p 30422:22   -v /Users/zhumenggang/zhu_work/go/src/docker/sys/openkylin/data:/var/www  --privileged=true --name openkylin e62e68c1f0af /bin/bash
+docker run -itd  -p 30422:22   -v /root/docker/openkylin/data:/var/www  --privileged=true --name openkylin e62e68c1f0af /bin/bash
+//进入容器
+docker exec -it openkylin bash
+//安装必要软件
+apt update && apt install -y openssh-server && apt install vim -y && apt install -y passwd
+
+
+修改配置
+vim /etc/ssh/sshd_config
+Port 22
+PermitRootLogin yes
+//创建用户
+mkdir -p /var/run/passwd && mkdir -p /var/run/utmp
+mkdir /run/sshd
+
+ssh-keygen -A
+/usr/sbin/sshd -D

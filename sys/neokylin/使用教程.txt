@@ -1,0 +1,27 @@
+docker-compose -f docker-compose.yaml up -d
+
+
+//中标麒麟
+docker pull securityneo/neokylin:tomcat90  //arm
+docker pull cs2cneokylin/ns76-base-x86_64:latest //x86_64
+
+
+
+
+docker run -itd  -p 30322:22   -v /Users/zhumenggang/zhu_work/go/src/docker/sys/neokylin/data:/var/www  --privileged=true --name neokylin 7dfbfedc4346    /bin/bash
+docker run -itd  -p 30322:22   -v /root/docker/neokylin/data:/var/www  --privileged=true --name neokylin 028f9cfb43dd    /bin/bash
+
+
+docker exec -it neokylin bash
+
+yum update -y && yum install -y openssh-server && yum install vim -y && yum install -y passwd
+
+
+修改配置
+vim /etc/ssh/sshd_config
+Port 22
+PermitRootLogin yes
+//创建用户
+ssh-keygen -A
+//mkdir -p /var/run/passwd && mkdir -p /var/run/utmp
+/usr/sbin/sshd -D
