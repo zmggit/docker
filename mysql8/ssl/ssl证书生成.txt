@@ -23,7 +23,7 @@ openssl rsa -in client-key.pem -out client-key.pem
 openssl x509 -req -in client-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem -set_serial 01 -out client-cert.pem
 
 验证证书是否正确
-openssl verify -CAfile ca.pem server-cert.pem client-cert.pem
+openssl verify -CAfile ca.pem server.pem client-cert.pem
 server-cert.pem: OK
 client-cert.pem: OK
 查看证书的内容（例如，检查证书有效的日期范围）

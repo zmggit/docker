@@ -1,0 +1,7 @@
+安装 nginx
+docker pull nginx:latest
+docker run -d --privileged -u root --name=nginx  -p 81:80  -p 444:443 -p 445:444 -v /Users/zhumenggang/zhu_work/go/src/docker/nginx/conf:/etc/nginx/conf.d/  -v /Users/zhumenggang/zhu_work/go/src/docker/nginx/data:/var/www/htm/ -v /Users/zhumenggang/zhu_work/go/src/docker/nginx/logs:/var/log sha256:678546cdd20cd5baaea6f534dbb7482fc9f2f8d24c1f3c53c0e747b699b849da
+
+docker run -d --privileged -u root --name=nginx  -p 81:80 -p 445:443   sha256:678546cdd20cd5baaea6f534dbb7482fc9f2f8d24c1f3c53c0e747b699b849da
+
+apt update -y;apt install vim

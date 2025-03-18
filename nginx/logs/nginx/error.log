@@ -1,0 +1,153 @@
+2025/03/05 05:57:52 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/05 05:57:52 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/05 05:57:52 [notice] 1#1: using the "epoll" event method
+2025/03/05 05:57:52 [notice] 1#1: nginx/1.27.4
+2025/03/05 05:57:52 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2025/03/05 05:57:52 [notice] 1#1: OS: Linux 6.10.11-linuxkit
+2025/03/05 05:57:52 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/03/05 05:57:52 [notice] 1#1: start worker processes
+2025/03/05 05:57:52 [notice] 1#1: start worker process 20
+2025/03/05 05:57:52 [notice] 1#1: start worker process 21
+2025/03/05 05:57:52 [notice] 1#1: start worker process 22
+2025/03/05 05:58:13 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/03/05 05:58:13 [notice] 20#20: gracefully shutting down
+2025/03/05 05:58:13 [notice] 22#22: gracefully shutting down
+2025/03/05 05:58:13 [notice] 21#21: gracefully shutting down
+2025/03/05 05:58:13 [notice] 20#20: exiting
+2025/03/05 05:58:13 [notice] 20#20: exit
+2025/03/05 05:58:13 [notice] 22#22: exiting
+2025/03/05 05:58:13 [notice] 21#21: exiting
+2025/03/05 05:58:13 [notice] 22#22: exit
+2025/03/05 05:58:13 [notice] 21#21: exit
+2025/03/05 05:58:13 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2025/03/05 05:58:13 [notice] 1#1: worker process 20 exited with code 0
+2025/03/05 05:58:13 [notice] 1#1: signal 29 (SIGIO) received
+2025/03/05 05:58:13 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2025/03/05 05:58:13 [notice] 1#1: worker process 21 exited with code 0
+2025/03/05 05:58:13 [notice] 1#1: worker process 22 exited with code 0
+2025/03/05 05:58:13 [notice] 1#1: exit
+2025/03/05 05:58:13 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/05 05:58:13 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/05 05:58:13 [notice] 1#1: using the "epoll" event method
+2025/03/05 05:58:13 [notice] 1#1: nginx/1.27.4
+2025/03/05 05:58:13 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2025/03/05 05:58:13 [notice] 1#1: OS: Linux 6.10.11-linuxkit
+2025/03/05 05:58:13 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/03/05 05:58:13 [notice] 1#1: start worker processes
+2025/03/05 05:58:13 [notice] 1#1: start worker process 20
+2025/03/05 05:58:13 [notice] 1#1: start worker process 21
+2025/03/05 05:58:13 [notice] 1#1: start worker process 22
+2025/03/05 06:56:05 [error] 20#20: *23 upstream prematurely closed connection while reading response header from upstream, client: 172.17.0.1, server: pamop.won-opapi.com, request: "GET /test/v1 HTTP/1.1", upstream: "https://172.16.2.126:443/test/v1", host: "pamOp.won-opapi.com:444"
+2025/03/10 02:07:09 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/03/10 02:07:09 [notice] 20#20: gracefully shutting down
+2025/03/10 02:07:09 [notice] 22#22: gracefully shutting down
+2025/03/10 02:07:09 [notice] 21#21: gracefully shutting down
+2025/03/10 02:07:09 [notice] 20#20: exiting
+2025/03/10 02:07:09 [notice] 22#22: exiting
+2025/03/10 02:07:09 [notice] 21#21: exiting
+2025/03/10 02:07:09 [notice] 20#20: exit
+2025/03/10 02:07:09 [notice] 21#21: exit
+2025/03/10 02:07:09 [notice] 22#22: exit
+2025/03/10 02:07:09 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2025/03/10 02:07:09 [notice] 1#1: worker process 20 exited with code 0
+2025/03/10 02:07:09 [notice] 1#1: worker process 21 exited with code 0
+2025/03/10 02:07:09 [notice] 1#1: worker process 22 exited with code 0
+2025/03/10 02:07:09 [notice] 1#1: exit
+2025/03/12 07:54:46 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/12 07:54:46 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/12 07:54:46 [notice] 1#1: using the "epoll" event method
+2025/03/12 07:54:46 [notice] 1#1: nginx/1.27.4
+2025/03/12 07:54:46 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2025/03/12 07:54:46 [notice] 1#1: OS: Linux 6.10.11-linuxkit
+2025/03/12 07:54:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/03/12 07:54:46 [notice] 1#1: start worker processes
+2025/03/12 07:54:46 [notice] 1#1: start worker process 20
+2025/03/12 07:54:46 [notice] 1#1: start worker process 21
+2025/03/12 07:54:46 [notice] 1#1: start worker process 22
+2025/03/12 09:19:22 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/03/12 09:19:22 [notice] 20#20: gracefully shutting down
+2025/03/12 09:19:22 [notice] 21#21: gracefully shutting down
+2025/03/12 09:19:22 [notice] 20#20: exiting
+2025/03/12 09:19:22 [notice] 21#21: exiting
+2025/03/12 09:19:22 [notice] 22#22: gracefully shutting down
+2025/03/12 09:19:22 [notice] 22#22: exiting
+2025/03/12 09:19:22 [notice] 20#20: exit
+2025/03/12 09:19:22 [notice] 22#22: exit
+2025/03/12 09:19:22 [notice] 21#21: exit
+2025/03/12 09:19:22 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2025/03/12 09:19:22 [notice] 1#1: worker process 20 exited with code 0
+2025/03/12 09:19:22 [notice] 1#1: worker process 21 exited with code 0
+2025/03/12 09:19:22 [notice] 1#1: worker process 22 exited with code 0
+2025/03/12 09:19:22 [notice] 1#1: exit
+2025/03/17 05:50:50 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/17 05:50:50 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/17 05:50:50 [notice] 1#1: using the "epoll" event method
+2025/03/17 05:50:50 [notice] 1#1: nginx/1.27.4
+2025/03/17 05:50:50 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2025/03/17 05:50:50 [notice] 1#1: OS: Linux 6.10.11-linuxkit
+2025/03/17 05:50:50 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/03/17 05:50:50 [notice] 1#1: start worker processes
+2025/03/17 05:50:50 [notice] 1#1: start worker process 20
+2025/03/17 05:50:50 [notice] 1#1: start worker process 21
+2025/03/17 05:50:50 [notice] 1#1: start worker process 22
+2025/03/17 05:56:10 [warn] 37#37: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/17 05:56:10 [warn] 37#37: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/17 06:01:52 [error] 21#21: *19 open() "/var/www/htm/chuantou/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: pamop.won-opapi.com, request: "GET /favicon.ico HTTP/1.1", host: "pamop.won-opapi.com:445", referrer: "https://pamop.won-opapi.com:445/"
+2025/03/17 06:20:31 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/03/17 06:20:31 [notice] 20#20: gracefully shutting down
+2025/03/17 06:20:31 [notice] 22#22: gracefully shutting down
+2025/03/17 06:20:31 [notice] 21#21: gracefully shutting down
+2025/03/17 06:20:31 [notice] 20#20: exiting
+2025/03/17 06:20:31 [notice] 22#22: exiting
+2025/03/17 06:20:31 [notice] 21#21: exiting
+2025/03/17 06:20:31 [notice] 20#20: exit
+2025/03/17 06:20:31 [notice] 21#21: exit
+2025/03/17 06:20:31 [notice] 22#22: exit
+2025/03/17 06:20:31 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2025/03/17 06:20:31 [notice] 1#1: worker process 20 exited with code 0
+2025/03/17 06:20:31 [notice] 1#1: worker process 21 exited with code 0
+2025/03/17 06:20:31 [notice] 1#1: worker process 22 exited with code 0
+2025/03/17 06:20:31 [notice] 1#1: exit
+2025/03/17 06:20:31 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/17 06:20:31 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/17 06:20:31 [notice] 1#1: using the "epoll" event method
+2025/03/17 06:20:31 [notice] 1#1: nginx/1.27.4
+2025/03/17 06:20:31 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2025/03/17 06:20:31 [notice] 1#1: OS: Linux 6.10.11-linuxkit
+2025/03/17 06:20:31 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/03/17 06:20:31 [notice] 1#1: start worker processes
+2025/03/17 06:20:31 [notice] 1#1: start worker process 20
+2025/03/17 06:20:31 [notice] 1#1: start worker process 21
+2025/03/17 06:20:31 [notice] 1#1: start worker process 22
+2025/03/17 06:35:12 [error] 20#20: *11 SSL_do_handshake() failed (SSL: error:0A00010B:SSL routines::wrong version number) while SSL handshaking to upstream, client: 172.17.0.1, server: pamop.won-opapi.com, request: "GET /test/v1 HTTP/1.1", upstream: "https://172.16.2.126:443/test/v1", host: "pamOp.won-opapi.com:445"
+2025/03/17 06:36:24 [error] 20#20: *15 SSL_do_handshake() failed (SSL: error:0A00010B:SSL routines::wrong version number) while SSL handshaking to upstream, client: 172.17.0.1, server: pamop.won-opapi.com, request: "GET /test/v1 HTTP/1.1", upstream: "https://172.16.2.126:443/test/v1", host: "pamop.won-opapi.com:445"
+2025/03/17 06:41:03 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/03/17 06:41:03 [notice] 21#21: gracefully shutting down
+2025/03/17 06:41:03 [notice] 21#21: exiting
+2025/03/17 06:41:03 [notice] 20#20: gracefully shutting down
+2025/03/17 06:41:03 [notice] 20#20: exiting
+2025/03/17 06:41:03 [notice] 22#22: gracefully shutting down
+2025/03/17 06:41:03 [notice] 20#20: exit
+2025/03/17 06:41:03 [notice] 22#22: exiting
+2025/03/17 06:41:03 [notice] 22#22: exit
+2025/03/17 06:41:03 [notice] 21#21: exit
+2025/03/17 06:41:03 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2025/03/17 06:41:03 [notice] 1#1: worker process 20 exited with code 0
+2025/03/17 06:41:03 [notice] 1#1: worker process 21 exited with code 0
+2025/03/17 06:41:03 [notice] 1#1: signal 29 (SIGIO) received
+2025/03/17 06:41:03 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2025/03/17 06:41:03 [notice] 1#1: worker process 22 exited with code 0
+2025/03/17 06:41:03 [notice] 1#1: exit
+2025/03/17 06:41:03 [emerg] 1#1: invalid URL prefix in /etc/nginx/conf.d/sslcr.conf:21
+2025/03/17 06:42:24 [emerg] 1#1: invalid URL prefix in /etc/nginx/conf.d/sslcr.conf:21
+2025/03/17 06:44:41 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/17 06:44:41 [warn] 1#1: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+2025/03/17 06:44:41 [notice] 1#1: using the "epoll" event method
+2025/03/17 06:44:41 [notice] 1#1: nginx/1.27.4
+2025/03/17 06:44:41 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2025/03/17 06:44:41 [notice] 1#1: OS: Linux 6.10.11-linuxkit
+2025/03/17 06:44:41 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/03/17 06:44:41 [notice] 1#1: start worker processes
+2025/03/17 06:44:41 [notice] 1#1: start worker process 20
+2025/03/17 06:44:41 [notice] 1#1: start worker process 21
+2025/03/17 06:44:41 [notice] 1#1: start worker process 22

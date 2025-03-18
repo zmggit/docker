@@ -63,6 +63,7 @@ docker exec -it mysql8 bin/bash
 
  use mysql;
  select host,user,plugin from user;
+  SELECT ID,USER,HOST, DB,COMMAND,TIME FROM information_schema.processlist;
  update user set host='%' where user='root';
 复制容器内外文件
  docker cp 5e019ec16480:/etc/apt/sources.list /opt/datas/docker/mysql/ 容器到宿主机
