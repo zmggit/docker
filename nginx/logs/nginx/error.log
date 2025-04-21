@@ -151,3 +151,18 @@
 2025/03/17 06:44:41 [notice] 1#1: start worker process 20
 2025/03/17 06:44:41 [notice] 1#1: start worker process 21
 2025/03/17 06:44:41 [notice] 1#1: start worker process 22
+2025/03/28 12:13:46 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/03/28 12:13:46 [notice] 22#22: gracefully shutting down
+2025/03/28 12:13:46 [notice] 21#21: gracefully shutting down
+2025/03/28 12:13:46 [notice] 20#20: gracefully shutting down
+2025/03/28 12:13:46 [notice] 21#21: exiting
+2025/03/28 12:13:46 [notice] 22#22: exiting
+2025/03/28 12:13:46 [notice] 20#20: exiting
+2025/03/28 12:13:46 [notice] 22#22: exit
+2025/03/28 12:13:46 [notice] 21#21: exit
+2025/03/28 12:13:46 [notice] 20#20: exit
+2025/03/28 12:13:46 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2025/03/28 12:13:46 [notice] 1#1: worker process 20 exited with code 0
+2025/03/28 12:13:46 [notice] 1#1: worker process 21 exited with code 0
+2025/03/28 12:13:46 [notice] 1#1: worker process 22 exited with code 0
+2025/03/28 12:13:46 [notice] 1#1: exit

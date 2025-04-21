@@ -16,6 +16,7 @@ apt update && apt-get install -y openssh-server && apt install vim -y
 修改root密码  Apom@321
 passwd
 修改配置
+KexAlgorithms diffie-hellman-group1-sha1
 vim /etc/ssh/sshd_config
 
 Port 22

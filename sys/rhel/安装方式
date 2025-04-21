@@ -1,0 +1,14 @@
+docker run -itd  -p 30425:22 -v /Users/zhumenggang/zhu_work/go/src/docker/sys/rhel/data:/var/www  --privileged=true --name rhel 0e0a07d1bf0d    /bin/bash
+
+docker run -itd  -p 30425:22 -v /var/www/docker/rhel:/var/www  --privileged=true --name rhel 8121a9f5303b    /bin/bash
+
+docker exec -it rhel bash
+
+ rm -f /etc/ssh/ssh_host_*
+ /usr/bin/ssh-keygen -A
+ chmod 600 /etc/ssh/ssh_host_*
+ chmod 644 /etc/ssh/*.pub
+
+/usr/sbin/sshd
+
+yum update && yum install -y openssh-server && yum install vim -y
