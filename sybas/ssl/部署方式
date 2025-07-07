@@ -5,8 +5,6 @@ openssl req -new -x509 -newkey rsa:2048 -keyout MYSYBASE.key -nodes -days 3650 -
 
 cp /var/www/MYSYBASE.crt /opt/sybase/MYSYBASE.crt
 cp /var/www/MYSYBASE.key /opt/sybase/MYSYBASE.key
-
-
 第三步
 export SYBASE=/opt/sybase
 cat $SYBASE/MYSYBASE.crt $SYBASE/MYSYBASE.key > $SYBASE/$SYBASE_ASE/certificates/MYSYBASE.crt

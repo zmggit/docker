@@ -1,14 +1,17 @@
+//注意小写要用“”括起来
 
 
 登录cdb 容器查看前缀
 SHOW PARAMETER COMMON_USER_PREFIX;
 //查看版本
 SELECT * FROM V$VERSION;
-//查看所有用户
+//查看所有dba用户
 SELECT * FROM dba_users;
-
+SELECT username FROM dba_users;
+//查看所有用户
+SELECT username FROM all_users;
+GRANT CONNECT TO "akd" CONTAINER=ALL;
 范例 c##用户名
-
 查询 V$DATABASE 视图：
 通过查询 V$DATABASE 视图，你可以查看 CDB 列来确定当前数据库是否为 CDB。如果 CDB 列显示为 'YES'，则表示当前数据库是一个 CDB；如果是 'NO'，则表示是一个非 CDB（即 PDB 或传统数据库）。
 
@@ -38,65 +41,77 @@ alter pluggable database all open;
 //查看pdb库
  show pdbs
  SELECT NAME, OPEN_MODE FROM V$PDBS;
-//查看用户
-SELECT username FROM dba_users;
 
-
-
-
+//切换跟容器
+ ALTER SESSION SET CONTAINER = cdb$root;
 切换数据库(SERVER)
 alter session set container=ORCLPDB;
+SELECT username FROM dba_users;
+
 创建用户
-create user AKB identified by tiger;
-授权(小写的要双引号)
-grant dba to AKB;
-grant dba to "aka";
-grantgrant dba to "aa";
-
-
+create user akb identified by tiger;
+//删除用户
+不允许从可插入数据库（PDB）内部执行该操作
 切换数据库(SID)
 alter session set container=ORCLCDB;
 创建用户
 create user AKB identified by tiger;
 create user "C##aa" identified by "Apom@321";
-授权
-grant dba to AKB;
-grant dba,connect,resource,create view to "C##aa";
-grant create session to "C##aa";
-grant select any table to "C##test";
-grant update any table to "C##test";
-grant insert any table to "C##test";
-grant delete any table to "C##test";
-//登录
- sqlplus C##test/testpass
+ALTER USER "akd" IDENTIFIED BY "123456";
+ALTER USER "C##TEST" IDENTIFIED BY "123456";
+授权cdb
+grant dba,connect,resource,create view to "akd";
+grant create session to "akd";
+grant select any table to "akd";
+grant update any table to "akd";
+grant insert any table to "akd";
+grant delete any table to "akd";
+
+//授权pdb
+alter session set container= ORCLPDB;
+create user akc identified by 123456;
+//授权
+grant dba,connect,resource,create view to akc;
+grant select any table to akc;
+grant update any table to akc;
+grant insert any table to akc;
+grant delete any table to akc;
+grant create session to akc;
+grant sysdba to akc;
+
+create user "akd" identified by 123456;
+
+grant dba,connect,resource,create view to "akd";
+grant select any table to "akd";
+grant update any table to "akd";
+grant insert any table to "akd";
+grant delete any table to "akd";
+grant create session to "akd";
+grant sysdba to "akd";
+
+
+//重启
+lsnrctl stop
+lsnrctl start
+sqlplus akd/123456@ORCLPDB1
+sqlplus akc/123456@ORCLPDB1
+
+sqlplus "akd"/123456@ORCLPDB1
+
+sqlplus akc@172.16.43.1:1521/ORCLPDB
+//小写登录
+sqlplus \"akd\"/123456@localhost/ORCLPDB
+
+
+sqlplus akd/123456@172.16.43.1:1521/ORCLCDB
+sqlplus "akd"/123456@172.16.43.1:1521/MYDB
 
 
 DEDICATED"（专用服务器模式）和"SHARED"（共享服务器模式
-
-
-//监听
-lsnrctl status
-//查看配置是否正确
-tnsping MYDB
 //配置路径
 cd /opt/oracle/product/19c/dbhome_1/network/admin
-
-
-
 lsnrctl status
+//查看配置是否正确
+tnsping orclpdb
  lsnrctl reload
-
- sqlplus root/tigher@ORCLCDB
- sqlplus system/tigher@ORCLCDB
- sqlplus SYS/oracle@ORCLCDB
-
- sqlplus root/tigher@ORCLPDB
- sqlplus ORCLPDB/tigher@ORCLPDB
- sqlplus sys/tigher@ORCLPDB
-
-
-
-
-
-
 

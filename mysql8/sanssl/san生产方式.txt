@@ -1,0 +1,43 @@
+生成CA根证书
+
+openssl genrsa -out ca.key 2048
+openssl req -new -sha256 -out ca.csr -key ca.key -config ./ca.conf
+openssl x509 -req -days 3650 -in ca.csr -signkey ca.key -out ca.crt
+
+生成终端用户证书
+
+#生成秘钥，得到server.key
+openssl genrsa -out server.key 2048
+#生成证书签发请求，得到server.csr
+openssl req -new -sha256 -out server.csr -key server.key -config server.conf
+#用CA证书生成终端用户证书，得到server.crt  reqexts
+openssl x509 -req -days 3650 -CA ca.crt -CAkey ca.key -CAcreateserial -in server.csr -out server.pem -extensions req_ext -extfile server.conf
+
+客户端
+openssl genrsa -out client.key 2048
+openssl req -new -sha256 -out client.csr -key client.key -config server.conf
+openssl x509 -req -days 3650 -CA ca.crt -CAkey ca.key -CAcreateserial -in client.csr -out client.pem -extensions req_ext -extfile server.conf
+
+
+
+| 特性/格式 |  |  |  |
+| --- | --- | --- | --- |
+|  | 通常只包含公钥证书 | 通常只包含公钥证书 | 可以包含公钥证书、私钥或证书链 |
+|  | 二进制或 PEM 编码 | 二进制或 PEM 编码 | PEM 编码 |
+|  | 微软系统中的证书导入/导出 | 多种系统中的证书存储（常见于 Linux/Unix） | 证书和密钥的广泛存储和管理（常见于 OpenSSL 和多种加密场景） |
+|  |  |  |  |
+
+
+从 .cer 或 .crt 转换为 .pem：
+如果文件是 PEM 编码的，可以直接重命名为 .pem 文件。如果是二进制格式，可以使用 OpenSSL 转换：
+
+//crt cer 转 pem
+openssl x509 -in certificate.crt -out certificate.pem -inform DER -outform PEM
+openssl x509 -in certificate.cer -out certificate.pem -inform DER -outform PEM
+
+// 如果 .pem 文件包含私钥，可以提取私钥到单独的文件：
+openssl rsa -in certificate.pem -out private_key.pem
+6. 总结
+.cer 文件：微软常用格式，用于存储公钥证书，可以是二进制或 PEM 编码。
+.crt 文件：常见于多种系统，用于存储公钥证书，可以是二进制或 PEM 编码。
+.pem 文件：PEM 编码的文件，可以包含证书、私钥或证书链，灵活应用于多种加密场景。

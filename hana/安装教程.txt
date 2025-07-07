@@ -1,0 +1,2 @@
+docker 启动
+docker run -p 39013:39013 -p 8090:8090 -p 39017:39017 -p 39041-39045:39041-39045 -p 1128-1129:1128-1129 -p 59013-59014:59013-59014 --ulimit nofile=1048576:1048576 --sysctl kernel.shmmax=1073741824 --sysctl net.ipv4.ip_local_port_range='40000 60999' --sysctl kernel.shmall=8388608 --name hana saplabs/hanaexpress --master-password Password@won-cloud321 --agree-to-sap-license

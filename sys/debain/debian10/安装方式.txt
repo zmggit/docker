@@ -1,0 +1,30 @@
+docker pull --platform=linux/amd64 debian:10
+
+docker run -itd    -v /Users/zhumenggang/zhu_work/go/src/docker/sys/debain/debian10/data:/opt/won-cloud/conf/  --privileged=true --name debian10 sha256:69530eaa9e7e18d0aad40c38b75a22b40c6ebdc374c059bd5f2eb07042caa50a    /bin/bash
+
+//在容器内安装 iptables-legacy 工具包
+apt update && apt install iptables-legacy -y
+//将 iptables 命令切换到 legacy 版本
+update-alternatives --set iptables /usr/sbin/iptables-legacy
+update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+//iptables --version
+
+//阿里云源
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian-security buster/updates main
+deb-src http://mirrors.aliyun.com/debian-security buster/updates main
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+
+
+更换为 http 绕过证书
+sed -i 's/https:/http:/g' /etc/apt/sources.list
+
+//解压
+tar -C /usr/local -xzf
+
+export PATH=$PATH:/usr/local/go/bin
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin

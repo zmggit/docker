@@ -1,0 +1,22 @@
+//查看服务器级别的登录名
+SELECT name AS LoginName, type_desc AS LoginType
+FROM master.sys.server_principals
+WHERE type IN ('S', 'U', 'G'); -- 筛选SQL用户、Windows用户和Windows组
+
+字段说明：
+name：登录名。
+type_desc：登录类型，常见的值有：
+SQL_LOGIN：SQL Server 身份验证的用户。
+WINDOWS_LOGIN：Windows 身份验证的用户。
+WINDOWS_GROUP：Windows 组。
+
+//方法二：查看数据库级别的用户
+
+SELECT name AS UserName, type_desc AS UserType
+FROM sys.database_principals
+WHERE type IN ('S', 'U');
+
+name：数据库用户名。
+type_desc：用户类型，常见的值有：
+SQL_USER：SQL Server 身份验证的用户。
+WINDOWS_USER：Windows 身份验证的用户。

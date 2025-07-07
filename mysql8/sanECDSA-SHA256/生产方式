@@ -1,5 +1,5 @@
 //校验
-openssl x509 -in server.cert -text -noout
+openssl x509 -in server.crt -text -noout
 
 # 生成根证书私钥
 openssl ecparam -out ca.key -name prime256v1 -genkey

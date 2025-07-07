@@ -8,7 +8,7 @@ apt-get install telnet -y && apt-get install telnetd -y && apt-get install net-t
 
 //#安装rsyslog日志
 apt-get install rsyslog -y
-#检查版本rsyslogd -v#查询配置的登录认证日志存储位置
+# -v#查询配置的登录认证日志存储位置
 启动 /usr/sbin/rsyslogd
 查看登录失败cat /etc/rsyslog.d/50-default.conf#查询登录认证的日志cat /var/log/auth.log
 查看为啥登录不上日志 tail -f /var/log/syslog

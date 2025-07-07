@@ -1,0 +1,1 @@
+docker run --restart=always --name mariadb10 --privileged=true -d -p 3308:3306 -v /Users/zhumenggang/zhu_work/go/src/docker/mariadb/config/my.cnf:/etc/mysql/my.cnf -v /Users/zhumenggang/zhu_work/go/src/docker/mariadb/log:/var/log/ -v /Users/zhumenggang/zhu_work/go/src/docker/mariadb/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 c095444ba303

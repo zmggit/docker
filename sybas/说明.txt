@@ -1,10 +1,11 @@
+
+/Users/zhumenggang/Library/DBeaverData/drivers/drivers/sybase/jconnect
 拉起镜像
 docker pull docker-0.unsee.tech/datagrip/sybase:16.0
 docker run -d -t -p 5000:5000 --name=sybase16 -v /var/www/docker/sybase16/mudata:/var/www docker-0.unsee.tech/datagrip/sybase:16.0
 docker exec -it sybase16 bash
 //安装isql
 cat /opt/sybase/interfaces
-
 [sybase]
 Description = SYBASE ODBC Driver DSN
 Driver = Devart ODBC Driver for ASE
@@ -13,6 +14,8 @@ Database = testdb
 User = sa
 Password = myPassword
 Port = 5000
+
+
 
 
 [sybase]
@@ -26,39 +29,40 @@ Password= myPassword
 
 
 
-
-
+//odbc 连接客户端配置
 //查看已安装
 dpkg -l | grep -i "sybase\|odbc"
 //安装
 dpkg -i SybaseODBCDriverforUnix.deb
+dpkg -i devartodbcase_amd64.deb
+
 //卸载
- rm -rf /etc/odbc.ini
+rm -rf /etc/odbc.ini
+//配置 ODBC 驱动
 rm -rf /etc/odbcinst.ini
 rm -rf /opt/sybase/ODBC
 rm -rf /usr/lib/odbc/sybase
 rm -rf /opt/cdata
 dpkg -r cdata-odbc-driver-for-sybase
 
-//校验
+/etc/odbcinst.ini
+
+//校验查看配置文件路径
 odbcinst -j
 odbcinst -q -d
 odbcinst -q -s
 
-isql sybase sa mypassword
+isql -v sybase sa mypassword
 grant sso_role to satester;
 
-isql -U sa -P myPassword -S MYSYBASE
+isql -Usa -PmyPassword -SMYSYBASE
 isql -U sa -P myPassword -S DEVART_ASE
 
 isql -v -S "DRIVER={MySQL ODBC 8.0 Driver};SERVER=192.168.1.100;PORT=3306;DATABASE=mydb" username password
 
-isql sybase
 
 //角色
 db_owner 和 db_datareader
 
-
-
-
+容器内
 cp /var/www/MYSYBASE.crt /opt/sybase/MYSYBASE.crtexit
