@@ -1,2 +1,107 @@
-docker 启动
+#docker 启动
 docker run -p 39013:39013 -p 8090:8090 -p 39017:39017 -p 39041-39045:39041-39045 -p 1128-1129:1128-1129 -p 59013-59014:59013-59014 --ulimit nofile=1048576:1048576 --sysctl kernel.shmmax=1073741824 --sysctl net.ipv4.ip_local_port_range='40000 60999' --sysctl kernel.shmall=8388608 --name hana saplabs/hanaexpress --master-password Password@won-cloud321 --agree-to-sap-license
+#查看用户组
+SELECT * FROM "SYS"."USERGROUPS";
+#创建用户组
+CREATE USERGROUP DEFAULT;
+#创建用户
+CREATE USER "zmg" PASSWORD 'Apom@321' NO FORCE_FIRST_PASSWORD_CHANGE SET USERGROUP DEFAULT;
+#连接 并且测试是否可以连接
+hdbsql -j -A -sslprovider openssl -u ZMG -p Apom@321 -Z traceFile=stdout -Z traceOptions=debug=warning,flush=on -n 172.16.43.1:39017 "SELECT CURRENT_USER, CURRENT_SCHEMA FROM DUMMY;"
+#证书连接
+hdbsql -j -A -sslprovider openssl -Z authenticationMethods=x509 -Z authenticationX509=test_x509_user.pem -Z traceFile=stdout -Z traceOptions=debug=error,flush=on -n 172.16.43.1:39017  "SELECT * FROM "SYS"."USERGROUPS";"
+
+
+
+创建根证书
+openssl genrsa -out demorootca.key 4096
+openssl req -x509 -new -nodes -key demorootca.key -sha256 -days 365 -subj "/CN=172.16.43.1/ST=ON" -out demorootca.crt
+
+创建用户证书
+openssl genrsa -out test_x509_user.key 2048
+openssl req -new -nodes -key test_x509_user.key -out test_x509_user.csr -subj "/CN=172.16.43.1"
+openssl x509 -req -in test_x509_user.csr -CA demorootca.crt -CAkey demorootca.key -CAcreateserial -days 31 -out test_x509_user.crt
+
+//创建证书
+CREATE CERTIFICATE X509_USER_CERT FROM '-----BEGIN CERTIFICATE-----
+                                        MIIDwDCCAagCFA/BPm5ohG83qNUljjVswXqRRNuzMA0GCSqGSIb3DQEBCwUAMCMx
+                                        FDASBgNVBAMMCzE3Mi4xNi40My4xMQswCQYDVQQIDAJPTjAeFw0yNTA3MDgwNzM3
+                                        MDRaFw0yNTA4MDgwNzM3MDRaMBYxFDASBgNVBAMMCzE3Mi4xNi40My4xMIIBIjAN
+                                        BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw6HiuNdfJfrSvNdfHbL3OK9DVLHP
+                                        vjauC3mUKDfRfHAeUQJN3IGoVJbnb9uMAOLCLx2YkGJ6xbrxjL+h4w9DMuLnJhPr
+                                        94wLlHGvx9affc55XE1E+ASLe5fVMWHSW2dM6H2qmY0ffN+t9+kjtbADXNch+Fog
+                                        GczmCAUiXcut7W/mkFb+aR3q4K6QbDCFLAZXEAxrgDbLa6V+Qvzhe/o6s0V648jZ
+                                        s7IsWA2aO3/FafAqEDzxWcyjFnKriysBP7bl/WtdaF5Rd2FMXsAMhcNW9zTyCctu
+                                        CHAFvI7gTGe/8knldhTcRgpgawacbA78480N14vuKyXgDXO/0Jl+PrWwkwIDAQAB
+                                        MA0GCSqGSIb3DQEBCwUAA4ICAQCTrADIrZYNKwhnw0agzkIE2OvGM6HuwzqhYhN1
+                                        ln/9scnuOhqF4Q6Hy+Jb6zsHSMrns9xXPxaEtk9SVAV3r7A+tMEaXABv71vXABgx
+                                        OLPC9eHv7toznF/6QaABNNYp4lRrygWWO8pNpOVIaIOyCxuqcIGnJMfFn66YYFjJ
+                                        P3U2urBNhn0zoc+Mgf9LpgLQ5pDMLCKLc3dWqd64cJRPXq8QaVoxp3VBmRAWf2Hw
+                                        jZ0qzDbqUFPA/pTg+TOOiuPTXvLg62yeUqaOucmGUo5uNHzBiMeWxMpP+fl4VotC
+                                        cAA8ZbJXUMKQYxeysRlKTzfcf7FDnBMgIQd2bupqsmtWkHKL1TKdmmXyM/IktKBr
+                                        NU9iTAZKjrG8cebxt/MHi4qaSpJzQ6ulewDf0Rfy/62+FYMxdmnpmZY4NrHRD0HH
+                                        I07BnVAIbtcurSHGB6PStgXs4Ebl9K38t5sIIv81IaQu2ZJJt0tgKims0TZdunvE
+                                        eNjqxjsrFJfaVzfYhTLDJhFZwcyIIuMYM1gylcN/Eem+SA8Iz3d2Bdin9/SkjMhY
+                                        XjJI37pJDilJW2oPNiKRbBjmHsQbun0VHObs0I4v8aNIJLOpsdBLLMRqLnzBotNk
+                                        D6DMCKe7wpeWrzbjcILu2OBycz5LudbXLSR0m/saJvbuZZ3dDPTzXJ6RA+uq7a78
+                                        DILGdw==
+                                        -----END CERTIFICATE-----';
+
+SELECT CERTIFICATE_NAME, SUBJECT_DISTINGUISHED_NAME, ISSUER_DISTINGUISHED_NAME, ISSUER_COMMON_NAME
+    FROM CERTIFICATES WHERE CERTIFICATE_NAME='X509_USER_CERT';
+
+
+CREATE CERTIFICATE DEMOROOTCA_CERT FROM '-----BEGIN CERTIFICATE-----
+                                         MIIFJzCCAw+gAwIBAgIUUCI7od2uNGHT8NJb2XudztfChtAwDQYJKoZIhvcNAQEL
+                                         BQAwIzEUMBIGA1UEAwwLMTcyLjE2LjQzLjExCzAJBgNVBAgMAk9OMB4XDTI1MDcw
+                                         ODA3MzY1MVoXDTI2MDcwODA3MzY1MVowIzEUMBIGA1UEAwwLMTcyLjE2LjQzLjEx
+                                         CzAJBgNVBAgMAk9OMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA4dhO
+                                         j5+Zlvkue1oSDJjxr+cpsqoL+oE5karjzd8HbCHtzD9sAarmQ5K2zD7bx8lI1GVC
+                                         bzuPpVWOoOsErPigY9ynumxgiZayhdF5dM37CJze5C7IC3Bsa2/9boS1DKR/6nZO
+                                         eYFVvi3cH1cIklsbCVUpykvWjmqvU7TkRUwivyjBXaCC6IwRDxbrMDN7JnO7wwFh
+                                         Apmd+JmWcttP+yukW24lF6L7v7Nmsz++ZmTC6FiDZIMMGiKUapKKmcPQcBjG61ez
+                                         gmenilGJsbRKgQ0m3CBHYUnaRj2gIwlNa2PPdmwCMQbO3R9xMZIpQE6pgr3XfdFB
+                                         4bbXS8NZT21TbdUWrSPSDoBNMdgRTigEv/idyeyW/IdJzBnd4gqLLWgjNjuNp1hq
+                                         gAHbhqqQYww7K27tqDYvHjWFpj1LnHCIzv6dByVe0/4LveM6ULxtyABeyaV1eRAh
+                                         39DemBvuufEZsQ3oLMOYIfaSREdjllc+Qt4Ds04/d7jBcvA3+wIxALV983zcoiAM
+                                         CGbtQD3pWzSn4l7d4g2aEmVpQfXElXdRxPV4FCrh110Tp3VMwFdV80CAMvTwUHkp
+                                         4PO0/GStXD9zPUpqjwoPIl2oiCeeMXMTlaNxUvtkiRRSFGRYu0yjaeopcokiNXyG
+                                         Jk1t03kUBjcw8+OuQm/aJtKQOCWdEoZ2MNsCFpcCAwEAAaNTMFEwHQYDVR0OBBYE
+                                         FNgAoSdH6hA82LqMkeMGZ83se71vMB8GA1UdIwQYMBaAFNgAoSdH6hA82LqMkeMG
+                                         Z83se71vMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggIBADGo4CKa
+                                         GJelo5AzjEa6a+KBYOQmZYGXSFSKEv9k6EAO71mSax1EeqP0R9IqUmrwjF+VWn3f
+                                         P8M957KNRsAeW/cc0z57BBEYdFYLzYVUsdSeU7Htlb1wVRRvjDa3UfYHFU4mwIbo
+                                         rpjWl5x5up3jB/nQiJOJCwTfD2qm8I9/mTFBjuIMIRZpsBGtfWFN8c5doU228yES
+                                         bFhNs77R4ENyoMHKGQCPZhTYymdusTZ5K2UiMZhD0QqrCqP7MOkIvxZlAPCnd3A7
+                                         uIXYWREJLqSdzgCRp4/Ic/+ENHniCDXQSIvfSBl+DY+3H8/NGN7D6QUetMZ6nX7+
+                                         J7zQTeZ2kxsbJthPLZETV9ZgFsQLeq8Zmzw98C3i/7UASKf7hC6ARvJq8wfoOJ/3
+                                         Sjt2DsN32/ttE5vk3MFjzaXGmXQ7fHtlZUHONhIFxTjX6OpMDE8R0OaYvjoHJaiO
+                                         OvGDEp9SIr/633WW9C8chGC9puzk+8UP5W2YP6e9ZsUEo5jLui+f5f6dhDmj6Z85
+                                         lgQyz3SJXQl7mz7/UGfjQxY6fFcsUX42PzojscWSMhhX3UnSkGoEA3xTg7lZFBGk
+                                         taWiPt7FYFU6s2wMB9/JYllr5rORDRXO0N6PXfx7CfLPAyVGT7pCc5okwHFIljSC
+                                         Kza6iDtM+7NKPyfV1a+h78/Exx9NqeOkcgOP
+                                         -----END CERTIFICATE-----';  --Past the contents of the demorootca.crt file
+
+SELECT CERTIFICATE_NAME, SUBJECT_DISTINGUISHED_NAME, ISSUER_DISTINGUISHED_NAME, ISSUER_COMMON_NAME
+    FROM CERTIFICATES WHERE CERTIFICATE_NAME = 'DEMOROOTCA_CERT';
+
+
+#清理
+DROP USER TESTX509_TECHNICAL;
+DROP PSE X509_PSE;
+DROP CERTIFICATE DEMOROOTCA_CERT;
+DROP CERTIFICATE X509_USER_CERT;
+DROP X509 PROVIDER DEMO_X509_PROVIDER;
+
+//添加
+CREATE X509 PROVIDER DEMO_X509_PROVIDER WITH ISSUER 'SP=ON, CN=172.16.43.1';
+SELECT * FROM X509_PROVIDERS;
+CREATE PSE X509_PSE;
+SELECT * FROM PSES;
+ALTER PSE X509_PSE ADD CERTIFICATE DEMOROOTCA_CERT;
+SELECT * FROM PSE_CERTIFICATES;
+SET PSE X509_PSE PURPOSE X509 FOR PROVIDER DEMO_X509_PROVIDER;
+SELECT * FROM PSES;
+#创建用户
+CREATE USER TESTX509_TECHNICAL WITH IDENTITY 'CN=172.16.43.1' FOR X509 PROVIDER DEMO_X509_PROVIDER SET USERGROUP DEFAULT;
+SELECT * FROM USERS WHERE USER_NAME = 'TESTX509_TECHNICAL';

@@ -10,10 +10,11 @@ openssl req -x509 -newkey rsa -days 3650 -nodes -config /usr/lib/ssl/openssl.cnf
 
 //容器复制宿主机
 docker cp 78d393713e0b:/home/limstorm/.vnc/ssl /var/www/vncssl
+docker cp 97ea7919b354:/usr/sap/HXE/home/certs /var/www/docker/saphana
 
 //宿主机到容器
 docker cp /var/www/sanssl server.key 78d393713e0b:/home/aka/.vnc/ssl
-docker cp /var/www/sanssl server.cert 78d393713e0b:/home/aka/.vnc/ssl
+docker cp /var/www/sanssl server.cert 97ea7919b354:/usr/sap/HXE/home/certs
 
 
 
