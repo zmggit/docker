@@ -1,5 +1,7 @@
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C
+测试 docker 镜像源是否可用
+ping -c 3  dev.xuanyuan.dev
 
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C
 
 echo -e "USER tel\nPASS Apom@321\n" | telnet 172.16.150.24 23
 

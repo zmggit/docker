@@ -1,0 +1,28 @@
+services:
+  caddy:
+    container_name: caddy
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "182:80"
+      - "1443:443"
+      - "1443:443/udp"
+    volumes:
+      - /Users/zhumenggang/zhu_work/go/src/docker/caddy/conf:/etc/caddy
+      - /Users/zhumenggang/zhu_work/go/src/docker/caddy/site:/srv
+      - /Users/zhumenggang/zhu_work/go/src/docker/caddy/data:/data
+      - /Users/zhumenggang/zhu_work/go/src/docker/caddy/config:/config
+    environment:
+      - CADDY_DOMAIN=example.com
+      - CADDY_EMAIL=admin@example.com
+    healthcheck:
+      test: [ "CMD", "caddy", "validate", "--config", "/etc/caddy/Caddyfile" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    networks:
+      - app-tier
+networks:
+  app-tier:
+    name: app-tier
+    driver: bridge

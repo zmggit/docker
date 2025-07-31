@@ -9,6 +9,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"strings"
 	"sync"
@@ -25,34 +26,35 @@ type Config struct {
 	Vhost    string // 虚拟主机
 }
 
-// Exchange 表示 RabbitMQ 交换机
-type Exchange struct {
+// Queue 表示 RabbitMQ 队列
+type Queue struct {
 	Name       string `json:"name"`
 	Vhost      string `json:"vhost"`
 	Type       string `json:"type"`
+	Exclusive  bool   `json:"exclusive"`
 	Durable    bool   `json:"durable"`
 	AutoDelete bool   `json:"auto_delete"`
 }
 
 func main() {
 	// 解析命令行参数
-	prefix := flag.String("prefix", "openapi~", "交换机名称前缀")
-	host := flag.String("host", "172.16.19.5", "RabbitMQ 主机地址")
-	port := flag.Int("port", 15672, "RabbitMQ HTTP API 端口")
-	username := flag.String("user", "won-cloud-admin", "用户名")
-	password := flag.String("pass", "sk,j*@b2i8_7hGAoiDho3", "密码")
-	vhost := flag.String("vhost", "/", "虚拟主机")
-	workers := flag.Int("workers", 5, "并发删除的工作协程数")
-
-	//prefix := flag.String("prefix", "openapi.", "交换机名称前缀")
-	//host := flag.String("host", "172.16.43.1", "RabbitMQ 主机地址")
+	//prefix := flag.String("prefix", "openapi~", "队列名称前缀")
+	//host := flag.String("host", "172.16.19.5", "RabbitMQ 主机地址")
 	//port := flag.Int("port", 15672, "RabbitMQ HTTP API 端口")
-	//username := flag.String("user", "pam", "用户名")
-	//password := flag.String("pass", "ebd02fe092e0564301d45c9104348e66", "密码")
+	//username := flag.String("user", "won-cloud-admin", "用户名")
+	//password := flag.String("pass", "sk,j*@b2i8_7hGAoiDho3", "密码")
 	//vhost := flag.String("vhost", "/", "虚拟主机")
 	//workers := flag.Int("workers", 5, "并发删除的工作协程数")
 
-	//prefix := flag.String("prefix", "openapi~", "交换机名称前缀")
+	prefix := flag.String("prefix", "queue@", "队列名称前缀")
+	host := flag.String("host", "172.16.43.1", "RabbitMQ 主机地址")
+	port := flag.Int("port", 15672, "RabbitMQ HTTP API 端口")
+	username := flag.String("user", "pam", "用户名")
+	password := flag.String("pass", "ebd02fe092e0564301d45c9104348e66", "密码")
+	vhost := flag.String("vhost", "/", "虚拟主机")
+	workers := flag.Int("workers", 5, "并发删除的工作协程数")
+
+	//prefix := flag.String("prefix", "queue_", "队列名称前缀")
 	//host := flag.String("host", "172.16.10.12", "RabbitMQ 主机地址")
 	//port := flag.Int("port", 15672, "RabbitMQ HTTP API 端口")
 	//username := flag.String("user", "won-cloud-admin", "用户名")
@@ -80,24 +82,24 @@ func main() {
 	fmt.Printf("正在删除前缀为 '%s' 的交换机...\n", *prefix)
 
 	// 获取交换机列表
-	exchanges, err := getExchanges(config)
+	queues, err := getQueues(config)
 	if err != nil {
-		log.Fatalf("获取交换机列表失败: %v", err)
+		log.Fatalf("获取队列列表失败: %v", err)
 	}
 	// 过滤匹配前缀的交换机
-	matchingExchanges := filterExchanges(exchanges, *prefix)
-	if len(matchingExchanges) == 0 {
+	matchingQueues := filterQueues(queues, *prefix)
+	if len(matchingQueues) == 0 {
 		fmt.Println("没有找到匹配的交换机")
 		return
 	}
 
-	fmt.Printf("找到 %d 个匹配的交换机:\n", len(matchingExchanges))
+	fmt.Printf("找到 %d 个匹配的交换机:\n", len(matchingQueues))
 
-	for _, ex := range matchingExchanges {
+	for _, ex := range matchingQueues {
 		fmt.Printf("  - %s (类型: %s, 持久化: %t)\n", ex.Name, ex.Type, ex.Durable)
 	}
 	// 确认操作
-	fmt.Print("\n确定要删除这些交换机吗? (y/N): ")
+	fmt.Print("\n确定要删除这些队列吗? (y/N): ")
 	var confirm string
 	fmt.Scanln(&confirm)
 	if strings.ToLower(confirm) != "y" {
@@ -106,13 +108,13 @@ func main() {
 	}
 
 	// 并发删除交换机
-	deleteExchanges(config, matchingExchanges, *workers)
+	deleteQueues(config, matchingQueues, *workers)
 }
 
 // 获取所有交换机列表
-func getExchanges(config Config) ([]Exchange, error) {
-	url := fmt.Sprintf("http://%s:%d/api/exchanges/%s",
-		config.Host, config.Port, urlEncodeVhost(config.Vhost))
+func getQueues(config Config) ([]Queue, error) {
+	url := fmt.Sprintf("http://%s:%d/api/queues/%s",
+		config.Host, config.Port, url.PathEscape(config.Vhost))
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -131,8 +133,11 @@ func getExchanges(config Config) ([]Exchange, error) {
 		body, _ := io.ReadAll(resp.Body)
 		return nil, fmt.Errorf("API 请求失败: %s, 响应: %s", resp.Status, string(body))
 	}
+	//body, _ := io.ReadAll(resp.Body)
+	//str := string(body)
+	//fmt.Println(str)
 
-	var exchanges []Exchange
+	var exchanges []Queue
 	if err := json.NewDecoder(resp.Body).Decode(&exchanges); err != nil {
 		return nil, err
 	}
@@ -141,13 +146,13 @@ func getExchanges(config Config) ([]Exchange, error) {
 }
 
 // 过滤匹配指定前缀的交换机
-func filterExchanges(exchanges []Exchange, prefix string) []Exchange {
-	var result []Exchange
+func filterQueues(exchanges []Queue, prefix string) []Queue {
+	var result []Queue
 	for _, ex := range exchanges {
 		// 排除默认交换机 (amq.*)
-		if strings.HasPrefix(ex.Name, "amq.") {
-			continue
-		}
+		//if strings.HasPrefix(ex.Name, "amq.") {
+		//	continue
+		//}
 
 		if strings.HasPrefix(ex.Name, prefix) {
 			result = append(result, ex)
@@ -156,8 +161,8 @@ func filterExchanges(exchanges []Exchange, prefix string) []Exchange {
 	return result
 }
 
-// 并发删除交换机
-func deleteExchanges(config Config, exchanges []Exchange, workers int) {
+// 并发删除队列
+func deleteQueues(config Config, exchanges []Queue, workers int) {
 	var wg sync.WaitGroup
 	semaphore := make(chan struct{}, workers) // 并发控制信号量
 
@@ -171,11 +176,11 @@ func deleteExchanges(config Config, exchanges []Exchange, workers int) {
 		wg.Add(1)
 		semaphore <- struct{}{} // 获取信号量
 
-		go func(ex Exchange) {
+		go func(ex Queue) {
 			defer wg.Done()
 			defer func() { <-semaphore }() // 释放信号量
 
-			err := deleteExchange(config, ex)
+			err := deleteQueue(config, ex)
 			mu.Lock()
 			if err != nil {
 				failCount++
@@ -193,8 +198,8 @@ func deleteExchanges(config Config, exchanges []Exchange, workers int) {
 }
 
 // 删除单个交换机
-func deleteExchange(config Config, ex Exchange) error {
-	url := fmt.Sprintf("http://%s:%d/api/exchanges/%s/%s",
+func deleteQueue(config Config, ex Queue) error {
+	url := fmt.Sprintf("http://%s:%d/api/queues/%s/%s",
 		config.Host, config.Port, urlEncodeVhost(ex.Vhost), urlEncodeName(ex.Name))
 
 	req, err := http.NewRequest("DELETE", url, nil)

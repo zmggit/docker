@@ -1,0 +1,9 @@
+:80 {
+  root * /srv/chuantou
+  file_server
+}
+
+example.com:80 {
+  root * /srv/chuantou
+  file_server
+}

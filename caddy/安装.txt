@@ -1,0 +1,6 @@
+安装
+docker compose -f docker-compose.yaml up -d
+//重装
+docker compose exec -w /etc/caddy caddy caddy reload
+
+docker compose logs caddy -n=1000 -f

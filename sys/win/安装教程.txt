@@ -1,0 +1,1 @@
+docker run -itd  -p 23:22 -p 223:23 -p 221:21  -v /Users/zhumenggang/zhu_work/go/src/docker/sys/ubuntu/data:/var/www  --privileged=true --name ubuntu24.04 c3d1a3432580    /bin/bash
