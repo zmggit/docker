@@ -1,0 +1,6 @@
+使用dockerFile
+# 构建Docker镜像
+docker build -t my-php-app php/7.4
+
+# 运行Docker容器
+docker run -d -p 8080:80 my-php-app

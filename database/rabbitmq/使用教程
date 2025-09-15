@@ -1,1 +1,4 @@
 docker run -d --name rabbitmq -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=pam -e RABBITMQ_DEFAULT_PASS=ebd02fe092e0564301d45c9104348e66 rabbitmq:management
+docker run -d --name rabbitmq -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=pam -e RABBITMQ_DEFAULT_PASS='pPp%uLLJ34$*Y5Ds' rabbitmq:management
+
+docker stop rabbitmq;docker rm rabbitmq

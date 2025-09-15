@@ -1,0 +1,22 @@
+services:
+  uos:
+    container_name: uosv20
+    image:  openeuler/kylin:5.0.2-oe2403sp1
+    platform: Linux/arm64
+    privileged: true
+    ports:
+      - 922:22
+      - 923:23
+    volumes:
+      - ./log:/var/log
+      - ./conf:/opt/won-cloud/conf
+      - ./data:/var/www
+    networks:
+      - app-tier
+    restart: always
+#    command: /bin/bash
+networks:
+  app-tier:
+    external: true  #使用已存在的docker网络
+#    name: app-tier
+#    driver: bridge

@@ -23,3 +23,10 @@ default index tablespace "TEST";
 grant "PUBLIC","SOI" to "TEST";
 修改用户到指定表空间
 ALTER USER TEST DEFAULT TABLESPACE TEST;
+
+打包
+
+docker commit -a "1551605159" -m "dm8linuxamd64" de81f23569d3 1551605159/dm8:amd64
+
+docker save -o dm8linuxamd64.tar 1551605159/dm8:amd64
+
