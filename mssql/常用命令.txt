@@ -9,6 +9,7 @@ docker run -d --name mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Apom@321.321' -p 1
 //查看所在库
 SELECT DB_NAME();
 
+
 //查看服务器级别的登录名
 SELECT name AS LoginName, type_desc AS LoginType
 FROM master.sys.server_principals

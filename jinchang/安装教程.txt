@@ -13,34 +13,8 @@ docker run -d  -p 4321:54321 --restart=always -v /var/www/Db/kingbase/data:/var/
 docker exec -it kingbase /bin/bash
 //查看状态
 sys_ctl -D /home/kingbase/userdata/data/ status
-查看密码
-//docker inspect dm8
+
 //登录
 ksql -Ukingbase -d test -p54321
-//重要
-权限
-系统管理员（system)
-主要负责执行数据库日常管理的各种操作和自主存取控制。
-安全管理员（sso）
-主要负责强制访问规则的制定和管理，监督审计管理员和普通用户的操作，不能创建和操作普通对象。
-审计管理员（sao）
-主要负责数据库的审计，监督系统管理员和安全管理员的操作，不能创建和操作普通对象。
-
-
-//查看库列表
-SELECT datname FROM pg_database;
-//创建库
-CREATE DATABASE aka;
-//查看用户列表
-SELECT * FROM sys_user;
-//创建用户
-CREATE USER test WITH PASSWORD '123456';
-
-//授予权限
-ALTER USER aka CREATEDB;
-//创建模式并指定用户为所有者
-CREATE SCHEMA aka AUTHORIZATION aka;
-//设置用户的默认模式
-ALTER USER zhyj SET search_path TO zhyj;
 
 

@@ -1,0 +1,26 @@
+version: '3'
+services:
+  ftp:
+    image: bogem/ftp
+    volumes:
+      - ./ftp_data:/home/ftp
+    environment:
+      FTP_USER: root
+      FTP_PASS: Apom@321
+      PASV_ADDRESS: 0.0.0.0
+      PASV_MIN_PORT: 47446
+      PASV_MAX_PORT: 47480
+    ports:
+      - "20:20"
+      - "21:21"
+      - "47400-47480:47400-47480"
+    restart: always
+
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - ./sftp_data:/home/zmg
+    ports:
+      - "22:22"
+    restart: always
+    command: zmg:Apom@321:1001

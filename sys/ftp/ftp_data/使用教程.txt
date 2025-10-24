@@ -1,0 +1,4 @@
+#启动项目
+docker-compose -f docker-compose.yaml up -d
+
+docker run -d -v ./data:/home/vsftpd -p 20:20 -p 21:21 -p 47400-47470:47400-47470 -e FTP_USER=root -e FTP_PASS=Apom@321 -e PASV_ADDRESS=172.16.2.126 --name ftp --restart=always bogem/ftp

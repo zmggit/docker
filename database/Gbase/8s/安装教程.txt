@@ -1,0 +1,7 @@
+//拉取镜像
+docker pull liaosnet/gbase8s:v8.8_3633x31_csdk_arm64
+docker pull liaosnet/gbase8s:v8.8_3633x31_csdk_x64
+//启动数据库
+
+docker run -d -p 19088:9088 --name gbase8s --hostname node11 --privileged=true -v /Users/zhumenggang/zhu_work/go/src/docker/database/Gbase/8s/data:/opt/gbase/data -e SERVERNAME=gbase01 -e USERPASS=GBase123$% -e CPUS=1 -e MEMS=2048 -e ADTS=0 liaosnet/gbase8s:v8.8_3633x31_csdk_arm64
+docker run -d -p 19088:9088 --name gbase8s --hostname node11 --privileged=true -e SERVERNAME=gbase01 -e USERPASS=GBase123$% -e CPUS=1 -e MEMS=2048 -e ADTS=0 liaosnet/gbase8s:v8.8_3633x31_csdk_x64
